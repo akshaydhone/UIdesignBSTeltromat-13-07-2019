@@ -35,12 +35,12 @@ public class Main2Activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        /*b3.setOnClickListener(new View.OnClickListener() {
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(Main2Activity.this,PendingCall.class);
                 startActivity(i);
             }
-        });*/
+        });
     }
 }

@@ -55,6 +55,7 @@ private RelativeLayout texthome;
 
         b1=(Button)findViewById(R.id.b1);
         b2=(Button)findViewById(R.id.b2);
+
         e1=(EditText)findViewById(R.id.e1);
         e2=(EditText)findViewById(R.id.e2);
 
