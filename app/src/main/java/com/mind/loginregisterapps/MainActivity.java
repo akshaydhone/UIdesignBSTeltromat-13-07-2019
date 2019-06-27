@@ -130,10 +130,8 @@ private RelativeLayout texthome;
             try {
                 if (result != null) {
                     Toast.makeText(getApplicationContext(),result.getString("message1"),Toast.LENGTH_LONG).show();
-
                     Intent i = new Intent(MainActivity.this, Main2Activity.class);
                     startActivity(i);
-
                 }
 
             else if (result != null){
