@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Login Register Apps</string>
+
+    <string name="tag_prompt1">Choose a Tag</string>
+
+    <string-array name="tag_arrays1">
+        <item>Select</item>
+        <item>Printer</item>
+        <item>Xerox machine</item>
+        <item>CPU</item>
+        <item>Motherboard</item>
+
+
+    </string-array>
+
+
+    <string name="tag_prompt2">Choose a Tag</string>
+
+    <string-array name="tag_arrays2">
+        <item>Select</item>
+        <item>Completed</item>
+        <item>Needs to be visited again</item>
+        <item>Under-Repaired</item>
+        <item>Spare part Required</item>
+        <item>System sent to factory for repair</item>
+        <item>Other</item>
+
+
+    </string-array>
+
+
+    <string name="tag_prompt3">Choose a Tag</string>
+
+    <string-array name="tag_arrays3">
+        <item>Select</item>
+        <item>Cash Payment</item>
+        <item>Cheque Payment</item>
+        <item>Bank Transfer:NEFT,RTGS,IMPS</item>
+
+        <item>Other/FOC Specify</item>
+
+
+    </string-array>
+</resources>

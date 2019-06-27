@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mind.loginregisterapps">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".Main2Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".NewCallGen"
+            android:parentActivityName=".Main2Activity" />
+        <activity
+            android:name=".NewCall1"
+            android:parentActivityName=".NewCallGen" />
+        <activity
+            android:name=".NewCall2"
+            android:parentActivityName=".NewCall1" />
+        <activity
+            android:name=".NewCall3"
+            android:parentActivityName=".NewCall2" />
+        <activity
+            android:name=".NewCall4"
+            android:parentActivityName=".NewCall3" />
+        <activity
+            android:name=".PreviousCallGen"
+            android:parentActivityName=".Main2Activity" />
+        <activity android:name=".PendingCall"
+            android:parentActivityName=".Main2Activity"/>
+    </application>
+
+</manifest>
