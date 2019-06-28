@@ -27,7 +27,7 @@ public class NewCallGen extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(e1.getText().toString().trim().length()==0)
+                if(e1.getText().toString().trim().length()==0)
                 {
                     e1.setError("City not entered");
                     e1.requestFocus();
@@ -51,16 +51,17 @@ public class NewCallGen extends AppCompatActivity {
                 {
                     e4.setError("Address not entered");
                     e4.requestFocus();
-                }*/
-
-                Intent i=new Intent(NewCallGen.this,NewCall1.class);
-                startActivity(i);
+                }
 
 
 
-                /*else{
 
-                }*/
+                else{
+                    Intent i=new Intent(NewCallGen.this,NewCall1.class);
+                    startActivity(i);
+
+
+                }
 
             }
         });

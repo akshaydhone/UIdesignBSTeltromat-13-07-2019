@@ -38,9 +38,8 @@ public class NewCall2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(NewCall2.this,NewCall3.class);
-                startActivity(i);
-                /*if(e1.getText().toString().trim().length()==0)
+
+                if(e1.getText().toString().trim().length()==0)
                 {
                     e1.setError("Please fill the details");
                     e1.requestFocus();
@@ -61,9 +60,10 @@ public class NewCall2 extends AppCompatActivity {
 
 
                 else{
+                    Intent i=new Intent(NewCall2.this,NewCall3.class);
+                    startActivity(i);
 
-
-                }*/
+                }
             }
         }
 

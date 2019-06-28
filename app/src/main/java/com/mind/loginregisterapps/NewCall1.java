@@ -33,9 +33,8 @@ public class NewCall1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(NewCall1.this,NewCall2.class);
-                startActivity(i);
-                /*if(e1.getText().toString().trim().length()==0)
+
+                if(e1.getText().toString().trim().length()==0)
                 {
                     e1.setError("Email not entered");
                     e1.requestFocus();
@@ -53,10 +52,7 @@ public class NewCall1 extends AppCompatActivity {
                     e3.setError("IN time not entered");
                     e3.requestFocus();
                 }
-               else if(s1.equals("Select a Product"))
-                {
-                    Toast.makeText(NewCall1.this, "Please select a product", Toast.LENGTH_SHORT).show();
-                }
+
 
 
 
@@ -71,8 +67,10 @@ public class NewCall1 extends AppCompatActivity {
 
 
                 else{
+                    Intent i=new Intent(NewCall1.this,NewCall2.class);
+                    startActivity(i);
 
-                }*/
+                }
             }
         });
     }
