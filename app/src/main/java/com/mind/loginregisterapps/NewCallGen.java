@@ -153,7 +153,7 @@ public class NewCallGen extends AppCompatActivity {
         //Creating the notifiction builder object
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNNEL_ID)
                 .setSmallIcon(android.R.drawable.ic_dialog_email)
-                .setContentTitle("Adarsh Patil generated a call")
+                .setContentTitle("Akshay  generated a call")
                 .setContentText("Please share your confirmation")
                 .setAutoCancel(true)
                 .setContentIntent(helpPendingIntent)

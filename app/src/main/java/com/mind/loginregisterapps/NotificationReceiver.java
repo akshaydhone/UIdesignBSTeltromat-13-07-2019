@@ -36,7 +36,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         //if help button is clicked
         if (intent.getIntExtra(NotificationActivity.KEY_INTENT_HELP, -1) == NotificationActivity.REQUEST_CODE_HELP) {
-            Toast.makeText(context, "You Rescheduled the visit", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "You accepted the visit", Toast.LENGTH_LONG).show();
         }
 
         //if more button is clicked
