@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.onesignal.OneSignal;
 
 public class HomeActivity extends AppCompatActivity {
 CardView b1,b2,b3;
 LinearLayout ll;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,16 @@ LinearLayout ll;
         b1=(CardView)findViewById(R.id.b1);
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
+
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        //Again check if the user is Already Logged in or Not
+
+        if(mAuth.getCurrentUser() == null)
+        {
+            //User NOT logged In
+            this.finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
 
 
 
@@ -55,5 +69,24 @@ LinearLayout ll;
                 .init();
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.signout:
+                mAuth.signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        }
+        return true;
     }
 }
