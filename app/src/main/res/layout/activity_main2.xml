@@ -40,7 +40,7 @@
         android:layout_below="@+id/bgHeader"
         android:layout_marginLeft="-25dp"
         android:layout_marginTop="-5dp"
-         />
+        />
 
     <ImageView
         android:id="@+id/circle3"
@@ -50,7 +50,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="-80dp"
         android:layout_marginBottom="-30dp"
-       />
+        />
 
 
     <ScrollView
