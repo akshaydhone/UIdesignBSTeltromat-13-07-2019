@@ -1,5 +1,6 @@
 package com.mind.bst;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -163,6 +164,8 @@ public class TestPhp extends AppCompatActivity {
                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Client added successfully", Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(TestPhp.this,AdminActivity.class);
+                    startActivity(i);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
