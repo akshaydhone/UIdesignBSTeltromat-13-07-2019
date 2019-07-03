@@ -22,41 +22,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".splashscreen">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".splashscreen" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".Main2Activity"
-            android:parentActivityName=".MainActivity" >
-
-
-        </activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NewCallGen"
             android:parentActivityName=".Main2Activity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".NewCall1"
             android:parentActivityName=".NewCallGen"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".NewCall2"
             android:parentActivityName=".NewCall1"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".NewCall3"
             android:parentActivityName=".NewCall2"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".NewCall4"
             android:parentActivityName=".NewCall3"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".PreviousCallGen"
             android:parentActivityName=".Main2Activity" />
@@ -65,24 +55,29 @@
             android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".NotificationActivity"
-            android:parentActivityName=".Main2Activity"
-            >
-
-
-        </activity>
+            android:parentActivityName=".Main2Activity" />
 
         <receiver
             android:name=".NotificationReceiver"
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".AdminActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity">
-
-
-        </activity>
+        <activity
+            android:name=".AddClient"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".AddEngg"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

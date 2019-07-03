@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().setTitle("Login Page");
         OneSignal.startInit(this).init();
         mAuth = FirebaseAuth.getInstance(); // important Call
 
@@ -80,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void callsignin(String email,String password) {
+    private void callsignin(final String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -94,6 +95,23 @@ public class LoginActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Log.w("TESTING", "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                        else if(email.equals("rajesh@gmail.com"))
+                        {
+                            Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                            finish();
+                            startActivity(i);
+                            Toast.makeText(LoginActivity.this, "Logged in as admin", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if(email.equals("Rajesh@gmail.com"))
+                        {
+                            Intent i = new Intent(LoginActivity.this, AdminActivity.class);
+                            finish();
+                            startActivity(i);
+                            Toast.makeText(LoginActivity.this, "Logged in as admin", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Intent i = new Intent(LoginActivity.this, HomeActivity.class);

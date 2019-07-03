@@ -80,7 +80,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_access_time_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_present_to_all_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -91,7 +91,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ad3" />
+                            <entry key="outputName" value="f4" />
                             <entry key="sourceFile" value="C:\Users\Webcubic" />
                           </map>
                         </option>

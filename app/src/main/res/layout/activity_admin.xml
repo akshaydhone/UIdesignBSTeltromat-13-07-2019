@@ -5,27 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mind.bst.HomeActivity"
+    tools:context="com.mind.bst.AdminActivity"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="#fcfcfc"
     android:gravity="center"
     android:id="@+id/ll">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -42,14 +35,14 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
-                    app:srcCompat="@drawable/d1"
+                    app:srcCompat="@drawable/f1"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="New Call"/>
+                    android:text="Add Client"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -80,14 +73,14 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpink"
-                    app:srcCompat="@drawable/ad2"
+                    app:srcCompat="@drawable/f2"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Previous Call"/>
+                    android:text="Add Engineer"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -122,14 +115,14 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundgreen"
-                    app:srcCompat="@drawable/ad3"
+                    app:srcCompat="@drawable/f3"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Pending Calls"/>
+                    android:text="Send Notification"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -157,13 +150,13 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundyello"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_attach_file_black_24dp" />
+                    app:srcCompat="@drawable/f4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Links"
+                    android:text="Check Activities"
                     android:textStyle="bold" />
 
                 <View

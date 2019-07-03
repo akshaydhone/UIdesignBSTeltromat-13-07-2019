@@ -4,34 +4,30 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.onesignal.OneSignal;
 
-public class HomeActivity extends AppCompatActivity {
-CardView b1,b2,b3;
-LinearLayout ll;
-TextView username;
+public class AdminActivity extends AppCompatActivity {
+    CardView b1,b2,b3;
+    LinearLayout ll;
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        getSupportActionBar().setTitle("Home Dashboard");
+        setContentView(R.layout.activity_admin);
+        getSupportActionBar().setTitle("Admin Dashboard");
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ll=(LinearLayout)findViewById(R.id.ll);
         b1=(CardView)findViewById(R.id.b1);
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
-        username=(TextView)findViewById(R.id.username) ;
 
         mAuth = FirebaseAuth.getInstance(); // important Call
         //Again check if the user is Already Logged in or Not
@@ -44,46 +40,22 @@ TextView username;
         }
 
 
-        //Fetch the Display name of current User
-        FirebaseUser user = mAuth.getCurrentUser();
-        Log.d("LOGGED", "FirebaseUser: " + user);
-
-        if (user != null) {
-            username.setText("Welcome, " + user.getEmail());
-
-
-
-    LoginActivity.LoggedIn_User_Email =user.getEmail();
-
-
-
-
-        }
-
-
-
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(HomeActivity.this,NewCallGen.class);
+                Intent i=new Intent(AdminActivity.this,AddClient.class);
                 startActivity(i);
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(HomeActivity.this,PreviousCallGen.class);
+                Intent i=new Intent(AdminActivity.this,AddEngg.class);
                 startActivity(i);
             }
         });
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(HomeActivity.this,PendingCall.class);
-                startActivity(i);
-            }
-        });
+
 
 
         OneSignal.startInit(this)
@@ -91,8 +63,8 @@ TextView username;
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
 
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
