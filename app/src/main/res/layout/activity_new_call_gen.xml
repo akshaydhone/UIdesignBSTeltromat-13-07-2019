@@ -11,7 +11,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="25dp"
 
         android:theme="@style/ToolbarTheme"
         android:elevation="5dp" />
@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Client's Name"
+                        android:text="Customer Representative Name"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
                         android:textStyle="bold" />

@@ -4,18 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.onesignal.OneSignal;
 
 public class AdminActivity extends AppCompatActivity {
     CardView b1,b2,b3;
     LinearLayout ll;
     private FirebaseAuth mAuth;
+    //TextView username;
 
 
     @Override
@@ -38,6 +42,22 @@ public class AdminActivity extends AppCompatActivity {
             this.finish();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         }
+
+
+       /* FirebaseUser user = mAuth.getCurrentUser();
+        Log.d("LOGGED", "FirebaseUser: " + user);
+
+        if (user != null) {
+            username.setText("Welcome admin, " + user.getEmail());
+
+
+
+            LoginActivity.LoggedIn_User_Email =user.getEmail();
+
+
+
+
+        }*/
 
 
 

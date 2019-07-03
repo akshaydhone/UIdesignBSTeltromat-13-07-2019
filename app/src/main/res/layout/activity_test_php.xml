@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewCall4">
+    tools:context=".TestPhp">
+
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="5dp"
 
         android:theme="@style/ToolbarTheme"
         android:elevation="5dp" />
+
 
 
 
@@ -46,87 +49,96 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Client's Photo"
+                        android:text="Client's Region"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/im1"
-                        android:layout_width="249dp"
-                        android:layout_height="87dp"
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/cli" />
+                        android:id="@+id/e1"
+
+                        android:inputType="text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Payment To:"
+                        android:text="Client Name"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="Acc No:3456xxxx9087"/>
+                        android:id="@+id/e2"
+
+                        android:inputType="text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Payment Via"
+                        android:text="Client's Address"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <Spinner
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:id="@+id/s1"
+                        android:id="@+id/e3"
 
-                        android:drawablePadding="5dp"
-                        android:ems="10"
-                        android:entries="@array/tag_arrays3"
+                        android:inputType="text" />
 
-                        android:prompt="@string/tag_prompt3" />
-
-
-
-
-
-
-                    <Button
-                        android:id="@+id/b1"
-                        android:layout_width="250dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="@drawable/bg_ui"
-                        android:text="Save"
-                        android:layout_gravity="center"
-
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
+                        android:text="Client's Contact No"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/e4"
 
-                    <Button
-                        android:id="@+id/b2"
-                        android:layout_width="250dp"
+                        android:inputType="phone" />
+
+
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="@drawable/bg_ui"
-                        android:text="Submit"
-                        android:layout_gravity="center"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite"
+                        android:text="Client's Email-Id"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/e5"
+
+                        android:inputType="text" />
 
 
 
@@ -150,23 +162,20 @@
                 android:layout_marginRight="35dp"
                 android:elevation="10dp">
 
-
-
-
-
-
-
-
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_ui"
+                    android:text="Add"
+                    android:id="@+id/b1"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
             </RelativeLayout>
         </RelativeLayout>
+
     </ScrollView>
 
 
-    <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottom_nav"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu"/>
+
 
 </RelativeLayout>

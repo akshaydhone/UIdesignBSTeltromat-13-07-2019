@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".splashscreen" />
+        <activity android:name=".splashscreen">
+
+        </activity>
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".Main2Activity"
@@ -64,20 +66,23 @@
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AdminActivity">
+        <activity android:name=".AdminActivity"></activity>
+        <activity
+            android:name=".AddClient"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".AddEngg"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".TestPhp">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddClient"
-            android:parentActivityName=".AdminActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".AddEngg"
-            android:parentActivityName=".AdminActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

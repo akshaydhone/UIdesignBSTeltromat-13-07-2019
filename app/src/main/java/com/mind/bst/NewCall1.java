@@ -1,19 +1,44 @@
 package com.mind.bst;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.time.Clock;
+import java.util.Calendar;
+
 public class NewCall1 extends AppCompatActivity {
-    EditText e1,e2,e3,e4;
+
+    private static final String TAG = "NewCall1";
+    EditText e1,e2;
+
+
+
     Button b1;
     Spinner s1;
+    TimePickerDialog picker;
+
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    private TextView mDisplayTime;
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +49,8 @@ public class NewCall1 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         e1=(EditText)findViewById(R.id.e1);
         e2=(EditText)findViewById(R.id.e2);
-        e3=(EditText)findViewById(R.id.e3);
-        e4=(EditText)findViewById(R.id.e4);
+        mDisplayDate=(TextView) findViewById(R.id.e3);
+        mDisplayTime=(TextView) findViewById(R.id.e4);
 
         s1=(Spinner)findViewById(R.id.s1);
         b1=(Button)findViewById(R.id.b1);
@@ -47,20 +72,11 @@ public class NewCall1 extends AppCompatActivity {
                 }
 
 
-                else if(e3.getText().toString().trim().length()==0)
-                {
-                    e3.setError("IN time not entered");
-                    e3.requestFocus();
-                }
 
 
 
 
-          else if(e4.getText().toString().trim().equals(""))
-                {
-                     e4.setError("Product serial No. not entered");
-                   e4.requestFocus();
-                }
+
 
 
 
@@ -73,5 +89,87 @@ public class NewCall1 extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
+
+
+
+
+
+        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        NewCall1.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+
+                String date = day + "/" + month + "/" + year;
+                mDisplayDate.setText(date);
+            }
+        };
+
+
+
+
+        mDisplayTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Calendar cal=Calendar.getInstance();
+                int hour = cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = cal.get(Calendar.MINUTE);
+
+
+                picker = new TimePickerDialog(NewCall1.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                mDisplayTime.setText(sHour + ":" + sMinute);
+                            }
+                        }, hour, minutes, true);
+
+
+
+                picker.show();
+
+
+
+            }
+        });
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
 }

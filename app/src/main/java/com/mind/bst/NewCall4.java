@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -44,9 +46,10 @@ public class NewCall4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_call4);
-        getSupportActionBar().setTitle("New  Call Generation");
+        getSupportActionBar().setTitle("Payment Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         im1=(ImageView)findViewById(R.id.im1);
+
 
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +83,9 @@ public class NewCall4 extends AppCompatActivity {
                         }
                     }
                 });
+
                 builder.show();
+
 
             }
         });
@@ -125,6 +130,8 @@ public class NewCall4 extends AppCompatActivity {
         Log.d("LOGGED", "outputFileUri :  "+ outputFileUri);
 
         startActivityForResult(cameraIntent, 5);
+
+        //im1.setImageBitmap(BitmapFactory.decodeFile(pictureImagePath));
     }
 
 
@@ -132,6 +139,7 @@ public class NewCall4 extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, GALLERY_INTENT);
+
     }
 
 

@@ -18,7 +18,7 @@ public class NewCall3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_call3);
-       getSupportActionBar().setTitle("New  Call Generation");
+       getSupportActionBar().setTitle("Status and observation");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         e1=(EditText)findViewById(R.id.e1);
         e2=(EditText)findViewById(R.id.e2);

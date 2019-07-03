@@ -11,7 +11,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="25dp"
 
         android:theme="@style/ToolbarTheme"
         android:elevation="5dp" />
@@ -91,14 +91,16 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e3"
+                        android:textSize="15sp"
+                        android:text="Choose Date"
 
-                        android:inputType="date" />
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -109,14 +111,16 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e4"
+                        android:textSize="15sp"
+                        android:text="Select Time"
 
-                        android:inputType="time" />
+                       />
 
 
 
