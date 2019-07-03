@@ -120,10 +120,10 @@ public class TestPhp extends AppCompatActivity {
             String name= args[0];*/
 
             String region= args[0];
-            String name= args[0];
-            String address= args[0];
-            String contact= args[0];
-            String email= args[0];
+            String name= args[1];
+            String address= args[2];
+            String contact= args[3];
+            String email= args[4];
 
 
 
@@ -162,7 +162,7 @@ public class TestPhp extends AppCompatActivity {
                     //Toast.makeText(TestPhp.this, "success", Toast.LENGTH_SHORT).show();
                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Unable to retrieve any data from server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Client added successfully", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
