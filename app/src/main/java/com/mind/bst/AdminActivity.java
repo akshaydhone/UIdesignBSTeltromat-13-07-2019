@@ -16,10 +16,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.onesignal.OneSignal;
 
 public class AdminActivity extends AppCompatActivity {
-    CardView b1,b2,b3;
+    CardView b1,b2,b3,b4;
     LinearLayout ll;
     private FirebaseAuth mAuth;
-    //TextView username;
+    TextView username;
 
 
     @Override
@@ -32,6 +32,9 @@ public class AdminActivity extends AppCompatActivity {
         b1=(CardView)findViewById(R.id.b1);
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
+        b4=(CardView)findViewById(R.id.b4);
+        username=(TextView)findViewById(R.id.username) ;
+
 
         mAuth = FirebaseAuth.getInstance(); // important Call
         //Again check if the user is Already Logged in or Not
@@ -61,13 +64,34 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
+
+        //Fetch the Display name of current User
+        FirebaseUser user = mAuth.getCurrentUser();
+        Log.d("LOGGED", "FirebaseUser: " + user);
+
+        if (user != null) {
+            username.setText("Welcome, " + user.getEmail());
+
+
+
+            LoginActivity.LoggedIn_User_Email =user.getEmail();
+
+
+
+
+        }
+
+
+         //for adding clients
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(AdminActivity.this,AddClient.class);
+                Intent i=new Intent(AdminActivity.this,TestPhp.class);
                 startActivity(i);
             }
         });
+
+        //for adding engineers
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

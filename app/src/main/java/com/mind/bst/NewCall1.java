@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,13 +21,24 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.time.Clock;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class NewCall1 extends AppCompatActivity {
 
     private static final String TAG = "NewCall1";
     EditText e1,e2;
+
+    String URL= "http://192.168.0.27/callgen/index.php";
+
+    JSONParser jsonParser=new JSONParser();
+    int i=0;
 
 
 
@@ -83,6 +95,15 @@ public class NewCall1 extends AppCompatActivity {
 
 
                 else{
+
+
+
+                    AttemptLogin attemptLogin= new AttemptLogin();
+                    attemptLogin.execute(
+                            e1.getText().toString(),
+                            e2.getText().toString(),
+
+                            "");
                     Intent i=new Intent(NewCall1.this,NewCall2.class);
                     startActivity(i);
 
@@ -169,6 +190,78 @@ public class NewCall1 extends AppCompatActivity {
 
 
 
+    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
+
+        @Override
+
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+
+        }
+
+        @Override
+
+        protected JSONObject doInBackground(String... args) {
+
+
+
+           /* String email = args[2];
+            String password = args[1];
+            String name= args[0];*/
+
+
+            String cust_contact_no= args[0];
+
+            String cust_email_id= args[1];
+
+
+
+
+
+
+
+            ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+           /* params.add(new BasicNameValuePair("username", name));
+            params.add(new BasicNameValuePair("password", password));*/
+
+
+            params.add(new BasicNameValuePair("cust_contact_no", cust_contact_no));
+            params.add(new BasicNameValuePair("cust_email_id", cust_email_id));
+
+
+            /*if(email.length()>0)
+                params.add(new BasicNameValuePair("email",email));*/
+
+            JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
+
+
+            return json;
+
+        }
+
+        protected void onPostExecute(JSONObject result) {
+
+            // dismiss the dialog once product deleted
+            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
+            try {
+                if (result != null) {
+                    //Toast.makeText(TestPhp.this, "success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(NewCall1.this,NewCall2.class);
+                    startActivity(i);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
 
 
 

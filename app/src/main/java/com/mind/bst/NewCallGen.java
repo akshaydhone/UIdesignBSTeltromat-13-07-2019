@@ -24,13 +24,20 @@ import android.support.v4.app.RemoteInput;
 
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.xml.transform.Result;
@@ -41,6 +48,12 @@ public class NewCallGen extends AppCompatActivity {
     private FirebaseAuth mAuth;
     static String LoggedIn_User_Email;
     TextView username;
+
+
+    String URL= "http://192.168.0.27/add_clients/index.php";
+
+    JSONParser jsonParser=new JSONParser();
+    int i=0;
 
 
 
@@ -87,6 +100,8 @@ public class NewCallGen extends AppCompatActivity {
 
 
 
+
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +136,24 @@ public class NewCallGen extends AppCompatActivity {
 
                 else{
                     displayNotification();
-                    Intent i=new Intent(NewCallGen.this,NewCall1.class);
+
+
+                   Intent i=new Intent(NewCallGen.this,NewCall1.class);
                     startActivity(i);
+
+
+                  AttemptLogin attemptLogin= new AttemptLogin();
+                    attemptLogin.execute(
+                            e1.getText().toString(),
+                            e2.getText().toString(),
+                            e3.getText().toString(),
+                            e4.getText().toString(),
+                            "");
+
+
+
+
+
 
 
                 }
@@ -145,6 +176,7 @@ public class NewCallGen extends AppCompatActivity {
 
     public void displayNotification()   {
 
+
         // Toast.makeText(this, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
 
         AsyncTask.execute(new Runnable() {
@@ -157,13 +189,14 @@ public class NewCallGen extends AppCompatActivity {
                     StrictMode.setThreadPolicy(policy);
                     String send_email;
 
+
                     //This is a Simple Logic to Send Notification different Device Programmatically....
-                    if (LoginActivity.LoggedIn_User_Email.equals("ajay@gmail.com"))
+                    if (LoginActivity.LoggedIn_User_Email.equals("rajesh@gmail.com"))
                     {
-                        send_email = "aditya@gmail.com";
+                        send_email = "ajay@gmail.com";
                     }
                     else {
-                        send_email = "ajay@gmail.com";
+                        send_email = "rajesh@gmail.com";
                     }
 
                     try {
@@ -185,7 +218,7 @@ public class NewCallGen extends AppCompatActivity {
                                 + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
 
                                 + "\"data\": {\"foo\": \"bar\"},"
-                                + "\"contents\": {\"en\": \"Call generated\"}"
+                                + "\"contents\": {\"en\": \"Call generated \"}"
                                 + "}";
 
 
@@ -219,4 +252,85 @@ public class NewCallGen extends AppCompatActivity {
             }
         });
     }
+
+
+    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
+
+        @Override
+
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+
+        }
+
+        @Override
+
+        protected JSONObject doInBackground(String... args) {
+
+
+
+           /* String email = args[2];
+            String password = args[1];
+            String name= args[0];*/
+
+            String city_of_service= args[0];
+            String service_engg_name= args[1];
+            String cust_name= args[2];
+            String cust_address= args[3];
+
+
+
+
+
+
+
+
+            ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
+           /* params.add(new BasicNameValuePair("username", name));
+            params.add(new BasicNameValuePair("password", password));*/
+
+            params.add(new BasicNameValuePair("city_of_service", city_of_service));
+            params.add(new BasicNameValuePair("service_engg_name", service_engg_name));
+
+            params.add(new BasicNameValuePair("cust_name", cust_name));
+            params.add(new BasicNameValuePair("cust_address", cust_address));
+
+
+            /*if(email.length()>0)
+                params.add(new BasicNameValuePair("email",email));*/
+
+            JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
+
+
+            return json;
+
+        }
+
+        protected void onPostExecute(JSONObject result) {
+
+            // dismiss the dialog once product deleted
+            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
+            try {
+                if (result != null) {
+                    //Toast.makeText(TestPhp.this, "success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Client added successfully", Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(NewCallGen.this,NewCall1.class);
+                    startActivity(i);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
+
+
+
+
 }

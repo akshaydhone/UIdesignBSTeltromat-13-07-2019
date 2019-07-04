@@ -23,7 +23,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity
@@ -75,13 +79,11 @@
             android:name=".AddEngg"
             android:parentActivityName=".AdminActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".TestPhp">
+        <activity android:name=".TestPhp"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

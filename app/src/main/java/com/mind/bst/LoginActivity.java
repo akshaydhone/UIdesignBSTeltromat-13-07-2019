@@ -36,12 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.e2);
         signin=(Button)findViewById(R.id.b1);
 
-        if(mAuth.getCurrentUser() != null)
+        /*if(mAuth.getCurrentUser() != null)
         {
             //User NOT logged In
             finish();
             startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-        }
+        }*/
+
+
         user = mAuth.getCurrentUser();
         Log.d("LOGGED", "user: " + user);
 
