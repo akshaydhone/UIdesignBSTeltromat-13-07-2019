@@ -70,7 +70,7 @@
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".AdminActivity" />
         <activity
             android:name=".AddClient"
             android:parentActivityName=".AdminActivity"
@@ -79,8 +79,11 @@
             android:name=".AddEngg"
             android:parentActivityName=".AdminActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".TestPhp"
+        <activity
+            android:name=".TestPhp"
             android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".Demo"
             android:windowSoftInputMode="adjustPan">
 
 

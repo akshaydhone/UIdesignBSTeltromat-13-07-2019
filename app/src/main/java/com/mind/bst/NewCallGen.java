@@ -50,10 +50,12 @@ public class NewCallGen extends AppCompatActivity {
     TextView username;
 
 
-    String URL= "http://192.168.0.27/add_clients/index.php";
+    String URL= "http://192.168.0.27/callgen1/index.php";
 
     JSONParser jsonParser=new JSONParser();
     int i=0;
+
+
 
 
 
@@ -136,24 +138,15 @@ public class NewCallGen extends AppCompatActivity {
 
                 else{
                     displayNotification();
-
-
-                   Intent i=new Intent(NewCallGen.this,NewCall1.class);
-                    startActivity(i);
-
-
-                  AttemptLogin attemptLogin= new AttemptLogin();
+                   // Intent i=new Intent(NewCallGen.this,NewCall1.class);
+                    //startActivity(i);
+                    AttemptLogin attemptLogin= new AttemptLogin();
                     attemptLogin.execute(
                             e1.getText().toString(),
                             e2.getText().toString(),
                             e3.getText().toString(),
                             e4.getText().toString(),
                             "");
-
-
-
-
-
 
 
                 }
@@ -254,6 +247,7 @@ public class NewCallGen extends AppCompatActivity {
     }
 
 
+
     private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
@@ -292,9 +286,9 @@ public class NewCallGen extends AppCompatActivity {
 
             params.add(new BasicNameValuePair("city_of_service", city_of_service));
             params.add(new BasicNameValuePair("service_engg_name", service_engg_name));
-
             params.add(new BasicNameValuePair("cust_name", cust_name));
             params.add(new BasicNameValuePair("cust_address", cust_address));
+
 
 
             /*if(email.length()>0)
@@ -317,7 +311,7 @@ public class NewCallGen extends AppCompatActivity {
                     //Toast.makeText(TestPhp.this, "success", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Client added successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Saved successfully", Toast.LENGTH_LONG).show();
                     Intent i=new Intent(NewCallGen.this,NewCall1.class);
                     startActivity(i);
                 }
@@ -329,8 +323,4 @@ public class NewCallGen extends AppCompatActivity {
         }
 
     }
-
-
-
-
 }
