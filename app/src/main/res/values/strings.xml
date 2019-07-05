@@ -21,7 +21,15 @@
         <item>Ravi jadhav</item>
         <item>Ramesh More</item>
         <item>Nikhil kamble</item>
-        <item>Nikhil kamble</item>
+        <item>Ajit singh</item>
+
+        <item>Pravin Patel</item>
+        <item>Nimesh Hazare</item>
+        <item>Mayank agarwal</item>
+        <item>Bhavesh triphati</item>
+        <item>Sandesh Kamble</item>
+        <item>Ajay makrande</item>
+        <item>Vijay patil</item>
 
 
     </string-array>
@@ -34,25 +42,48 @@
         <item>@drawable/loginicon</item>
         <item>@drawable/loginicon</item>
         <item>@drawable/loginicon</item>
+
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
+        <item>@drawable/loginicon</item>
     </array>
 
     <string-array name="statues">
-        <item>Blogging</item>
+        <item>At work</item>
         <item>Available</item>
         <item>Busy</item>
         <item>In a meeting</item>
         <item>At work</item>
         <item>At gym</item>
-        <item>At gym</item>
+        <item>At work</item>
+
+        <item>Work</item>
+        <item>Available</item>
+        <item>Unavailable</item>
+        <item>Busy</item>
+        <item>At college</item>
+        <item>Online</item>
+        <item>Offline</item>
     </string-array>
 
     <string-array name="contactType">
         <item>Mobile</item>
         <item>Work</item>
         <item>Home</item>
+        <item>office</item>
         <item>Work</item>
+        <item>Home</item>
         <item>Mobile</item>
         <item>Mobile</item>
+        <item>Work</item>
+        <item>Home</item>
+        <item>Home</item>
+        <item>Office</item>
+        <item>Work</item>
         <item>Mobile</item>
     </string-array>
 

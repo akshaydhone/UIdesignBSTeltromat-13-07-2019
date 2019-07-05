@@ -70,7 +70,7 @@ public class AdminActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         Log.d("LOGGED", "FirebaseUser: " + user);
 
-        if (user != null) {
+        /*if (user != null) {
             username.setText("Welcome, " + user.getEmail());
 
 
@@ -80,7 +80,7 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
-        }
+        }*/
 
 
          //for adding clients
@@ -140,4 +140,5 @@ public class AdminActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }

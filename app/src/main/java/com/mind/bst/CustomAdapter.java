@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by Aylar-HP on 05/01/2016.
  */
 public class CustomAdapter extends BaseAdapter {
 
@@ -78,6 +77,7 @@ public class CustomAdapter extends BaseAdapter {
         holder.contactType.setText(row_pos.getContactType());
 
         return convertView;
+
     }
 
 

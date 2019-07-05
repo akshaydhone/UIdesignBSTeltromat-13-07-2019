@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "9622640096",
+    "firebase_url": "https://uidesignbsteltromat.firebaseio.com",
+    "project_id": "uidesignbsteltromat",
+    "storage_bucket": "uidesignbsteltromat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9622640096:android:79794287f8d30872",
+        "android_client_info": {
+          "package_name": "com.mind.bst"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9622640096-b3vp3iodpcg1qrph28j7ivl032ceacat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mind.bst",
+            "certificate_hash": "8926444c918a106feb1b2fc9f3f937fdf3fd020b"
+          }
+        },
+        {
+          "client_id": "9622640096-75rucp38p1b28b4tej3pec5ngqh34atk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKhAtUqUCDWb6gr0vnqr71G95EwjtddPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9622640096-75rucp38p1b28b4tej3pec5ngqh34atk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
