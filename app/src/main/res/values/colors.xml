@@ -12,7 +12,7 @@
     <color name="gradientStart">#19AA8B</color>
     <color name="gradientStop">#23A7D8</color>
     <color name="colorsp">#0099CC</color>
-
+    <color name="colorLightGray">#f1f1f1</color>
     <color name="colorPrimary1">#FFC107</color>
     <color name="colorPrimaryDark1">#FFA000</color>
     <color name="backgroundcolor">#fcfcfc</color>
@@ -24,6 +24,8 @@
     <color name="darkblue">#23283a</color>
     <color name="testcolorblue">#152b38</color>
     <color name="pink">#fe104d</color>
-
+    <color name="colorSelected">#fbffff</color>
     <color name="black_overlay">#66000000</color>
+
+
 </resources>

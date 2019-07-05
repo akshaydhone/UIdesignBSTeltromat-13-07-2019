@@ -82,9 +82,17 @@
         <activity
             android:name=".TestPhp"
             android:parentActivityName=".AdminActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".Demo"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Demo"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Web"
+            android:parentActivityName=".AdminActivity" />
+
+        <activity android:name=".MainChatActivity"
+            android:parentActivityName=".AdminActivity"
+            >
 
 
         </activity>

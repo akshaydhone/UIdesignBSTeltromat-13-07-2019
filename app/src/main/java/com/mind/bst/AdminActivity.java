@@ -33,7 +33,8 @@ public class AdminActivity extends AppCompatActivity {
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
         b4=(CardView)findViewById(R.id.b4);
-        username=(TextView)findViewById(R.id.username) ;
+        //username=(TextView)findViewById(R.id.username) ;
+         username=(TextView)findViewById(R.id.username);
 
 
         mAuth = FirebaseAuth.getInstance(); // important Call
@@ -96,6 +97,17 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(AdminActivity.this,AddEngg.class);
+                startActivity(i);
+            }
+        });
+
+
+        //For Viewing Calls
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(AdminActivity.this,MainChatActivity.class);
                 startActivity(i);
             }
         });
