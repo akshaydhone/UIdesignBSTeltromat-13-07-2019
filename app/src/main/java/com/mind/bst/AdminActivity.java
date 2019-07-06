@@ -87,7 +87,7 @@ public class AdminActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(AdminActivity.this,TestPhp.class);
+                Intent i=new Intent(AdminActivity.this,AddClient.class);
                 startActivity(i);
             }
         });
