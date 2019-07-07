@@ -21,8 +21,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClientList"></activity>
-        <activity android:name=".ViewClients" />
+        <activity android:name=".EngineerList"></activity>
+        <activity android:name=".ViewEngineers"
+            android:parentActivityName=".AdminActivity"/>
+        <activity android:name=".ClientList" />
+        <activity android:name=".ViewClients"
+            android:parentActivityName=".AdminActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".splashscreen">
             <intent-filter>

@@ -111,6 +111,13 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(AdminActivity.this,ViewEngineers.class);
+                startActivity(i);
+            }
+        });
 
 
 

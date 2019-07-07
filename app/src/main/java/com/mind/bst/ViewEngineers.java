@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewClients extends AppCompatActivity {
+public class ViewEngineers extends AppCompatActivity {
 
     public static final String CLIENT_NAME = "com.mind.bst.clientname";
     public static final String CLIENT_ID = "com.mind.bst.clientid";
@@ -28,21 +28,21 @@ public class ViewClients extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_clients);
-        getSupportActionBar().setTitle("View Client");
+        setContentView(R.layout.activity_view_engineers);
+        getSupportActionBar().setTitle("View Engineer");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        databaseClients = FirebaseDatabase.getInstance().getReference("Clients");
+        databaseClients = FirebaseDatabase.getInstance().getReference("Engineers");
         listViewClients = (ListView) findViewById(R.id.listViewClients);
 
 
-       clients = new ArrayList<>();
-     listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-       @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        clients = new ArrayList<>();
+        listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-});
+            }
+        });
 
 
 
@@ -71,7 +71,7 @@ public class ViewClients extends AppCompatActivity {
                 }
 
                 //creating adapter
-             ClientList artistAdapter = new ClientList(ViewClients.this, clients);
+                ClientList artistAdapter = new ClientList(ViewEngineers.this, clients);
                 //attaching adapter to the listview
                 listViewClients.setAdapter(artistAdapter);
             }
