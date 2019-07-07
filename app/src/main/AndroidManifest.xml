@@ -21,6 +21,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ClientList"></activity>
+        <activity android:name=".ViewClients" />
         <activity android:name=".MainActivity" />
         <activity android:name=".splashscreen">
             <intent-filter>
@@ -74,17 +76,11 @@
         <activity
             android:name=".AddClient"
             android:parentActivityName=".AdminActivity"
-            android:windowSoftInputMode="adjustPan" >
-
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".AddEngg"
             android:parentActivityName=".AdminActivity"
-            android:windowSoftInputMode="adjustPan" >
-
-
-
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".TestPhp"
             android:parentActivityName=".AdminActivity"
@@ -95,13 +91,9 @@
         <activity
             android:name=".Web"
             android:parentActivityName=".AdminActivity" />
-
-        <activity android:name=".MainChatActivity"
-            android:parentActivityName=".AdminActivity"
-            >
-
-
-        </activity>
+        <activity
+            android:name=".MainChatActivity"
+            android:parentActivityName=".AdminActivity" />
     </application>
 
 </manifest>

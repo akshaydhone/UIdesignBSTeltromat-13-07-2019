@@ -107,7 +107,7 @@ public class AdminActivity extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(AdminActivity.this,MainChatActivity.class);
+                Intent i=new Intent(AdminActivity.this,ViewClients.class);
                 startActivity(i);
             }
         });

@@ -1,23 +1,23 @@
 package com.mind.bst;
 
-public class Data {
+public class DataDetail {
 
 
 
 
 
-   //String data;
+    // String data;
     String region;
     String name;
     String address;
     String contact;
     String email;
 
-    public Data (){
+    public void data(){
 
     }
 
-   /*public String getData() {
+   /* public String getData() {
         return data;
     }*/
 
@@ -43,7 +43,7 @@ public class Data {
     }
 
 
-    public Data(String data, String region,String name,String address, String contact,String email) {
+    public DataDetail(String data, String region,String name,String address, String contact,String email) {
         //this.data = data;
 
         this.name = name;

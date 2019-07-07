@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClientList">
+
+
+    <TextView
+        android:id="@+id/textRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Mumbai"
+
+         />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textRegion"
+
+        android:text="Akshay Dhone" />
+
+    <TextView
+        android:id="@+id/textAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textName"
+
+        android:text="Andheri" />
+
+    <TextView
+        android:id="@+id/textCont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textAdd"
+
+        android:text="9098987890" />
+
+    <TextView
+        android:id="@+id/textEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textCont"
+
+        android:text="akshay@gmail.com" />
+
+
+
+
+</RelativeLayout>
