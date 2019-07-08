@@ -61,7 +61,7 @@
                         android:layout_marginRight="10dp"
                         android:id="@+id/e1"
 
-                        android:inputType="text" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                         android:layout_marginRight="10dp"
                         android:id="@+id/e2"
 
-                        android:inputType="text" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                         android:layout_marginRight="10dp"
                         android:id="@+id/e3"
 
-                        android:inputType="text" />
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
                         android:layout_marginRight="10dp"
                         android:id="@+id/e4"
 
-                        android:inputType="text" />
+                         />
 
 
 

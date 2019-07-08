@@ -56,7 +56,7 @@ import javax.xml.transform.Result;
 
 public class NewCallGen extends AppCompatActivity {
     Button b1;
-    AutoCompleteTextView  e1, e2, e3, e4;
+    AutoCompleteTextView  e1, e2,e3, e4;
     private FirebaseAuth mAuth;
     static String LoggedIn_User_Email;
     TextView username;
@@ -138,14 +138,14 @@ public static String abc;
             }
         });
 
-       final AutoCompleteTextView ACTV= (AutoCompleteTextView) findViewById(R.id.e1);
-        ACTV.setAdapter(autoComplete);
+       final AutoCompleteTextView e1= (AutoCompleteTextView) findViewById(R.id.e1);
+        e1.setAdapter(autoComplete);
 
        // AutoCompleteTextView ACTV= (AutoCompleteTextView) findViewById(R.id.actv);
         //ACTV.setAdapter(autoComplete);
 
-  final AutoCompleteTextView     ACTV2 = (AutoCompleteTextView) findViewById(R.id.e2);
-   ACTV2.setAdapter(a1);
+  final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
+   e2.setAdapter(a1);
 
        /*final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
         e2.setAdapter(a2);
@@ -161,8 +161,8 @@ public static String abc;
 
 
         //e2 = (EditText) findViewById(R.id.e2);
-       // e3 = (EditText) findViewById(R.id.e3);
-       // e4 = (EditText) findViewById(R.id.e4);
+    e3 = (AutoCompleteTextView) findViewById(R.id.e3);
+        e4 = (AutoCompleteTextView) findViewById(R.id.e4);
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

@@ -20,8 +20,10 @@ public class ViewClients extends AppCompatActivity {
     public static final String CLIENT_NAME = "com.mind.bst.clientname";
     public static final String CLIENT_ID = "com.mind.bst.clientid";
     ListView listViewClients;
-    List<Data> clients;
 
+    //here data is a java class name
+    List<Data> clients;
+//selecting a database ref
     DatabaseReference databaseClients;
 
 
@@ -32,11 +34,14 @@ public class ViewClients extends AppCompatActivity {
         getSupportActionBar().setTitle("View Client");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //getting the root name database table
         databaseClients = FirebaseDatabase.getInstance().getReference("Clients");
         listViewClients = (ListView) findViewById(R.id.listViewClients);
 
-
+//storing clients in array list
        clients = new ArrayList<>();
+
+
      listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
        @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,6 +61,9 @@ public class ViewClients extends AppCompatActivity {
         //attaching value event listener
         databaseClients.addValueEventListener(new ValueEventListener() {
             @Override
+
+
+            //when a data is changed reflect it into the database
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //clearing the previous artist list
@@ -63,9 +71,9 @@ public class ViewClients extends AppCompatActivity {
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
+                    //gettingclients
                     Data data = postSnapshot.getValue(Data.class);
-                    //adding artist to the list
+                    //adding clients to the list
                     clients.add(data);
 
                 }
@@ -76,6 +84,8 @@ public class ViewClients extends AppCompatActivity {
                 listViewClients.setAdapter(artistAdapter);
             }
 
+
+            //providing error if data not matched or database error
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
