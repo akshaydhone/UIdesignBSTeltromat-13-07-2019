@@ -48,7 +48,7 @@ TextView username;
         FirebaseUser user = mAuth.getCurrentUser();
         Log.d("LOGGED", "FirebaseUser: " + user);
 
-        if (user != null) {
+        /*if (user != null) {
             username.setText("Welcome, " + user.getEmail());
 
 
@@ -58,7 +58,7 @@ TextView username;
 
 
 
-        }
+        }*/
 
 
 
