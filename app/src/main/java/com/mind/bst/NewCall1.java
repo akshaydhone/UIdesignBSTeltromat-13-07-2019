@@ -21,6 +21,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
@@ -33,13 +36,15 @@ import java.util.Calendar;
 public class NewCall1 extends AppCompatActivity {
 
     private static final String TAG = "NewCall1";
-    EditText e1,e2;
+    EditText e1, e2;
 
-    String URL= "http://192.168.0.27/callgen/index.php";
+    FirebaseDatabase db=FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference;
 
-    JSONParser jsonParser=new JSONParser();
-    int i=0;
+    //String URL= "http://192.168.0.27/callgen/index.php";
 
+    // JSONParser jsonParser=new JSONParser();
+    //int i=0;
 
 
     Button b1;
@@ -57,67 +62,46 @@ public class NewCall1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_call1);
 
-       getSupportActionBar().setTitle("New  Call Generation");
+        getSupportActionBar().setTitle("New  Call Generation");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        e1=(EditText)findViewById(R.id.e1);
-        e2=(EditText)findViewById(R.id.e2);
-        mDisplayDate=(TextView) findViewById(R.id.e3);
-        mDisplayTime=(TextView) findViewById(R.id.e4);
+        e1 = (EditText) findViewById(R.id.e1);
+        e2 = (EditText) findViewById(R.id.e2);
+        mDisplayDate = (TextView) findViewById(R.id.e3);
+        mDisplayTime = (TextView) findViewById(R.id.e4);
 
-        s1=(Spinner)findViewById(R.id.s1);
-        b1=(Button)findViewById(R.id.b1);
+        s1 = (Spinner) findViewById(R.id.s1);
+        b1 = (Button) findViewById(R.id.b1);
+
+
+        databaseReference=db.getReference("Calls Generated");
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if(e1.getText().toString().trim().length()==0)
-                {
+                if (e1.getText().toString().trim().length() == 0) {
                     e1.setError("Email not entered");
                     e1.requestFocus();
-                }
-
-                else if(e2.getText().toString().trim().length()==0)
-                {
+                } else if (e2.getText().toString().trim().length() == 0) {
                     e2.setError("Date not Generated");
                     e2.requestFocus();
-                }
+                } else {
 
 
-
-
-
-
-
-
-
-
-
-
-                else{
-
-
-
-                    AttemptLogin attemptLogin= new AttemptLogin();
+                    sendData();
+                   /* AttemptLogin attemptLogin= new AttemptLogin();
                     attemptLogin.execute(
                             e1.getText().toString(),
                             e2.getText().toString(),
 
-                            "");
-                    Intent i=new Intent(NewCall1.this,NewCall2.class);
+                            "");*/
+                    Intent i = new Intent(NewCall1.this, NewCall2.class);
                     startActivity(i);
 
                 }
             }
         });
-
-
-
-
-
-
-
-
 
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -132,12 +116,11 @@ public class NewCall1 extends AppCompatActivity {
                         NewCall1.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
-                        year,month,day);
+                        year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
-
 
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -152,12 +135,10 @@ public class NewCall1 extends AppCompatActivity {
         };
 
 
-
-
         mDisplayTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Calendar cal=Calendar.getInstance();
+                Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
 
@@ -171,26 +152,41 @@ public class NewCall1 extends AppCompatActivity {
                         }, hour, minutes, true);
 
 
-
                 picker.show();
-
 
 
             }
         });
 
 
+    }
 
 
+
+    public void sendData(){
+        String e5Text=e1.getText().toString();
+        String e6Text=e2.getText().toString();
+
+
+
+    String id=databaseReference.push().getKey();
+
+        if(!TextUtils.isEmpty(e5Text) && (!TextUtils.isEmpty(e6Text)))
+        {
+            DataDetail1 data=new DataDetail1(id,e5Text,e6Text);
+            databaseReference.child(id).setValue(data);
+            Toast.makeText(this, "Call generated Successfully", Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }
 
 
+}
 
 
-
-    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
+    /*private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
 
@@ -206,9 +202,7 @@ public class NewCall1 extends AppCompatActivity {
 
 
 
-           /* String email = args[2];
-            String password = args[1];
-            String name= args[0];*/
+
 
 
             String cust_contact_no= args[0];
@@ -222,16 +216,13 @@ public class NewCall1 extends AppCompatActivity {
 
 
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-           /* params.add(new BasicNameValuePair("username", name));
-            params.add(new BasicNameValuePair("password", password));*/
 
 
             params.add(new BasicNameValuePair("cust_contact_no", cust_contact_no));
             params.add(new BasicNameValuePair("cust_email_id", cust_email_id));
 
 
-            /*if(email.length()>0)
-                params.add(new BasicNameValuePair("email",email));*/
+
 
             JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
 
@@ -242,8 +233,7 @@ public class NewCall1 extends AppCompatActivity {
 
         protected void onPostExecute(JSONObject result) {
 
-            // dismiss the dialog once product deleted
-            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
 
             try {
                 if (result != null) {
@@ -261,8 +251,8 @@ public class NewCall1 extends AppCompatActivity {
 
         }
 
-    }
+    }*/
 
 
 
-}
+

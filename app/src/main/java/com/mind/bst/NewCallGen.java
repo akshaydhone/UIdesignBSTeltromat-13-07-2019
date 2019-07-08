@@ -1,12 +1,17 @@
 package com.mind.bst;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,11 +28,17 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.RemoteInput;
 
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -37,6 +48,7 @@ import org.json.JSONObject;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,16 +56,26 @@ import javax.xml.transform.Result;
 
 public class NewCallGen extends AppCompatActivity {
     Button b1;
-    EditText e1,e2,e3,e4;
+    AutoCompleteTextView  e1, e2, e3, e4;
     private FirebaseAuth mAuth;
     static String LoggedIn_User_Email;
     TextView username;
+    public static String id;
+
+public static String abc;
+    public SharedPreferences savedData;
+
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+    FirebaseDatabase db=FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference;
 
 
-    String URL= "http://192.168.0.27/callgen1/index.php";
 
-    JSONParser jsonParser=new JSONParser();
-    int i=0;
+    //String URL= "http://192.168.0.27/callgen1/index.php";
+
+    //JSONParser jsonParser=new JSONParser();
+    // int i=0;
 
 
 
@@ -79,6 +101,70 @@ public class NewCallGen extends AppCompatActivity {
         getSupportActionBar().setTitle("New  Call Generation");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final ArrayAdapter<String> autoComplete = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        final ArrayAdapter<String> a1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        /*final ArrayAdapter<String> a2 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        final ArrayAdapter<String> a3 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        final ArrayAdapter<String> a4 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);*/
+        database.child("Engineers").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
+                for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
+                    //Get the suggestion by childing the key of the string you want to get.
+                    String region = suggestionSnapshot.child("region").getValue(String.class);
+                    //Add the retrieved string to the list
+                    autoComplete.add(region);
+
+
+                    String name = suggestionSnapshot.child("name").getValue(String.class);
+                    //Add the retrieved string to the list
+                    a1.add(name);
+
+                    /*String client = suggestionSnapshot.child("client").getValue(String.class);
+                    //Add the retrieved string to the list
+                    a3.add(client);
+
+                    String add = suggestionSnapshot.child("add").getValue(String.class);
+                    //Add the retrieved string to the list
+                    a4.add(add);*/
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+       final AutoCompleteTextView ACTV= (AutoCompleteTextView) findViewById(R.id.e1);
+        ACTV.setAdapter(autoComplete);
+
+       // AutoCompleteTextView ACTV= (AutoCompleteTextView) findViewById(R.id.actv);
+        //ACTV.setAdapter(autoComplete);
+
+  final AutoCompleteTextView     ACTV2 = (AutoCompleteTextView) findViewById(R.id.e2);
+   ACTV2.setAdapter(a1);
+
+       /*final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
+        e2.setAdapter(a2);
+
+
+      final   AutoCompleteTextView     e3 = (AutoCompleteTextView) findViewById(R.id.e3);
+        e3.setAdapter(a3);
+
+
+     final    AutoCompleteTextView     e4 = (AutoCompleteTextView) findViewById(R.id.e4);
+        e4.setAdapter(a4);*/
+
+
+
+        //e2 = (EditText) findViewById(R.id.e2);
+       // e3 = (EditText) findViewById(R.id.e3);
+       // e4 = (EditText) findViewById(R.id.e4);
+
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -93,60 +179,41 @@ public class NewCallGen extends AppCompatActivity {
         }
 
 
-        e1=(EditText)findViewById(R.id.e1);
-        e2=(EditText)findViewById(R.id.e2);
-        e3=(EditText)findViewById(R.id.e3);
-        e4=(EditText)findViewById(R.id.e4);
-
-        b1=(Button)findViewById(R.id.b1);
 
 
+        b1 = (Button) findViewById(R.id.b1);
+        savedData= PreferenceManager.getDefaultSharedPreferences(this);
 
+        databaseReference=db.getReference("Calls Generated");
 
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(e1.getText().toString().trim().length()==0)
-                {
+                if (e1.getText().toString().trim().length() == 0) {
                     e1.setError("City not entered");
                     e1.requestFocus();
-                }
-
-                else if(e2.getText().toString().trim().length()==0)
-                {
+                } else if (e2.getText().toString().trim().length() == 0) {
                     e2.setError("Name not entered");
                     e2.requestFocus();
-                }
-
-
-                else if(e3.getText().toString().trim().length()==0)
-                {
+                } else if (e3.getText().toString().trim().length() == 0) {
                     e3.setError("Client's Name not entered");
                     e3.requestFocus();
-                }
-
-
-                else if(e4.getText().toString().trim().length()==0)
-                {
+                } else if (e4.getText().toString().trim().length() == 0) {
                     e4.setError("Address not entered");
                     e4.requestFocus();
-                }
-
-
-
-
-                else{
+                } else {
+                    sendData();
                     displayNotification();
-                   // Intent i=new Intent(NewCallGen.this,NewCall1.class);
-                    //startActivity(i);
-                    AttemptLogin attemptLogin= new AttemptLogin();
+                     Intent i=new Intent(NewCallGen.this,NewCall1.class);
+                    startActivity(i);
+                   /* AttemptLogin attemptLogin= new AttemptLogin();
                     attemptLogin.execute(
                             e1.getText().toString(),
                             e2.getText().toString(),
                             e3.getText().toString(),
                             e4.getText().toString(),
-                            "");
+                            "");*/
 
 
                 }
@@ -155,19 +222,13 @@ public class NewCallGen extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
     }
 
 
 
 
-    public void displayNotification()   {
+
+    public void displayNotification() {
 
 
         // Toast.makeText(this, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
@@ -184,11 +245,9 @@ public class NewCallGen extends AppCompatActivity {
 
 
                     //This is a Simple Logic to Send Notification different Device Programmatically....
-                    if (LoginActivity.LoggedIn_User_Email.equals("rajesh@gmail.com"))
-                    {
+                    if (LoginActivity.LoggedIn_User_Email.equals("rajesh@gmail.com")) {
                         send_email = "ajay@gmail.com";
-                    }
-                    else {
+                    } else {
                         send_email = "rajesh@gmail.com";
                     }
 
@@ -248,7 +307,42 @@ public class NewCallGen extends AppCompatActivity {
 
 
 
-    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
+
+    public void sendData(){
+
+
+        String e1Text=e1.getText().toString();
+        String e2Text=e2.getText().toString();
+        String e3Text=e3.getText().toString();
+        String e4Text=e4.getText().toString();
+        //String e5Text=e5.getText().toString();
+
+//String abc[]={e1Text,e2Text,e3Text,e4Text};
+
+
+
+
+
+     String id=databaseReference.push().getKey();
+
+        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) && (!TextUtils.isEmpty(e3Text))   && (!TextUtils.isEmpty(e4Text)))
+        {
+            DataDetail data=new DataDetail(id,e1Text,e2Text,e3Text,e4Text);
+            databaseReference.child(id).setValue(data);
+            Toast.makeText(this, "Call generated Successfully", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+    }
+
+
+
+
+}
+
+
+   /* private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
 
@@ -264,9 +358,6 @@ public class NewCallGen extends AppCompatActivity {
 
 
 
-           /* String email = args[2];
-            String password = args[1];
-            String name= args[0];*/
 
             String city_of_service= args[0];
             String service_engg_name= args[1];
@@ -281,8 +372,7 @@ public class NewCallGen extends AppCompatActivity {
 
 
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-           /* params.add(new BasicNameValuePair("username", name));
-            params.add(new BasicNameValuePair("password", password));*/
+
 
             params.add(new BasicNameValuePair("city_of_service", city_of_service));
             params.add(new BasicNameValuePair("service_engg_name", service_engg_name));
@@ -291,8 +381,7 @@ public class NewCallGen extends AppCompatActivity {
 
 
 
-            /*if(email.length()>0)
-                params.add(new BasicNameValuePair("email",email));*/
+
 
             JSONObject json = jsonParser.makeHttpRequest(URL, "POST", params);
 
@@ -303,8 +392,7 @@ public class NewCallGen extends AppCompatActivity {
 
         protected void onPostExecute(JSONObject result) {
 
-            // dismiss the dialog once product deleted
-            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
 
             try {
                 if (result != null) {
@@ -322,5 +410,5 @@ public class NewCallGen extends AppCompatActivity {
 
         }
 
-    }
-}
+    }*/
+

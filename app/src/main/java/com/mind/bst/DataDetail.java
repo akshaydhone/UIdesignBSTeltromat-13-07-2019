@@ -6,23 +6,27 @@ public class DataDetail {
 
 
 
-    // String data;
-    String region;
+    //String data;
+    String city;
     String name;
-    String address;
-    String contact;
-    String email;
+    String client;
+    String add;
+  // String client_cont;
+   //String client_email;
+   // String client_cont;
+    //String client_email;
+   // String email;
 
-    public void data(){
+    public DataDetail (){
 
     }
 
-   /* public String getData() {
+   /*public String getData() {
         return data;
     }*/
 
-    public String getRegion() {
-        return region;
+    public String getCity() {
+        return city;
     }
 
 
@@ -30,26 +34,40 @@ public class DataDetail {
     public String getName() {
         return name;
     }
-    public String getAddress() {
-        return address;
+    public String getClient() {
+        return client;
     }
 
-    public String getContact() {
-        return contact;
+    public String getAdd() {
+        return add;
     }
 
-    public String getEmail() {
+   /* public String getClient_cont() {
+        return client_cont;
+    }
+
+
+
+    public String getClient_email() {
+        return client_email;
+    }*/
+
+
+
+   /* public String getEmail() {
         return email;
-    }
+    }*/
 
 
-    public DataDetail(String data, String region,String name,String address, String contact,String email) {
+    public DataDetail(String data, String city,String name,String client, String add) {
         //this.data = data;
 
         this.name = name;
-        this.region = region;
-        this.address = address;
-        this.contact = contact;
-        this.email = email;
+        this.city = city;
+        this.client = client;
+        this.add = add;
+        //this.client_cont = client_cont;
+        //this.client_email = client_email;
+        //this.email = email;
     }
 }

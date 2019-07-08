@@ -19,6 +19,9 @@ public class AddClient extends AppCompatActivity {
     FirebaseDatabase db=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
 
+
+    //DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +80,7 @@ public class AddClient extends AppCompatActivity {
 
                 else{
                     sendData();
-               Intent i=new Intent(AddClient.this,AdminActivity.class);
+                    Intent i=new Intent(AddClient.this,AdminActivity.class);
                     startActivity(i);
 
 
