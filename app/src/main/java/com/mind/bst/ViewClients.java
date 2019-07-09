@@ -1,5 +1,6 @@
 package com.mind.bst;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,9 @@ public class ViewClients extends AppCompatActivity {
 
         //getting the root name database table
         databaseClients = FirebaseDatabase.getInstance().getReference("Clients");
-        listViewClients = (ListView) findViewById(R.id.listViewClients);
+        //listViewClients = (ListView) findViewById(R.id.listViewClients);
+        listViewClients=(ListView)findViewById(R.id.listViewClients);
+
 
 //storing clients in array list
        clients = new ArrayList<>();

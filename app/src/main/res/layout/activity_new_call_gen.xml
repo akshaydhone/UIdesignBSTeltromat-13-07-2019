@@ -52,14 +52,16 @@
                         android:text="City of Service"
                         android:textColor="@color/colorPurple"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e1"
+                        android:inputType="text"
 
                         />
 
@@ -72,13 +74,13 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <AutoCompleteTextView
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e2"
-
+                        android:inputType="text"
                         />
 
                     <TextView
@@ -90,13 +92,13 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e3"
-
+                        android:inputType="text"
                        />
 
                     <TextView
@@ -108,12 +110,13 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <AutoCompleteTextView
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/e4"
+                        android:inputType="text"
 
                          />
 
@@ -149,6 +152,9 @@
                     android:id="@+id/b1"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite" />
+
+
+
             </RelativeLayout>
         </RelativeLayout>
 

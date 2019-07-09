@@ -3,9 +3,11 @@ package com.mind.bst;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -36,6 +38,7 @@ import java.util.Calendar;
 public class NewCall1 extends AppCompatActivity {
 
     private static final String TAG = "NewCall1";
+    //private static final String TAG = "SecondActivity";
     EditText e1, e2;
 
     FirebaseDatabase db=FirebaseDatabase.getInstance();
@@ -72,6 +75,16 @@ public class NewCall1 extends AppCompatActivity {
         s1 = (Spinner) findViewById(R.id.s1);
         b1 = (Button) findViewById(R.id.b1);
 
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = mPreferences.edit();
+
+        String city = mPreferences.getString(getString(R.string.city), "");
+        String name = mPreferences.getString(getString(R.string.name), "");
+
+        String client = mPreferences.getString(getString(R.string.client), "");
+        String add = mPreferences.getString(getString(R.string.add), "");
+
+
 
         databaseReference=db.getReference("Calls Generated");
 
@@ -89,7 +102,7 @@ public class NewCall1 extends AppCompatActivity {
                 } else {
 
 
-                    sendData();
+                    //sendData();
                    /* AttemptLogin attemptLogin= new AttemptLogin();
                     attemptLogin.execute(
                             e1.getText().toString(),

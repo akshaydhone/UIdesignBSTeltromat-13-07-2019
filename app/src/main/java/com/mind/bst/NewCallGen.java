@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -55,8 +56,18 @@ import java.util.Scanner;
 import javax.xml.transform.Result;
 
 public class NewCallGen extends AppCompatActivity {
+
+
+    private static final String TAG = "NewCallGen";
+
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
+
     Button b1;
-    AutoCompleteTextView  e1, e2,e3, e4;
+    private TextView e2;
+   private EditText e1,e3,e4;
+
     private FirebaseAuth mAuth;
     static String LoggedIn_User_Email;
     TextView username;
@@ -100,26 +111,63 @@ public static String abc;
         setContentView(R.layout.activity_new_call_gen);
         getSupportActionBar().setTitle("New  Call Generation");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       e1=(EditText) findViewById(R.id.e1);
+        e2 = (TextView) findViewById(R.id.e2);
+        e3 = (EditText) findViewById(R.id.e3);
+         e4 = (EditText) findViewById(R.id.e4);
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        if(mAuth.getCurrentUser() == null)
+        {
+            //User NOT logged In
+            this.finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
 
-        final ArrayAdapter<String> autoComplete = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
-        final ArrayAdapter<String> a1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+
+
+
+
+         /*if (user != null) {
+            e2.setText("Welcome, " + user.getEmail());
+
+
+
+    LoginActivity.LoggedIn_User_Email =user.getEmail();
+
+
+
+
+        }*/
+
+
+
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("tabian.com.sharedpreferencestest", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
+
+        checkSharedPreferences();
+
+
+        //final ArrayAdapter<String> autoComplete = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        //final ArrayAdapter<String> a1 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         /*final ArrayAdapter<String> a2 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         final ArrayAdapter<String> a3 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         final ArrayAdapter<String> a4 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);*/
-        database.child("Engineers").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        //database.child("Engineers").addValueEventListener(new ValueEventListener() {
+            //@Override
+           // public void onDataChange(DataSnapshot dataSnapshot) {
                 //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
-                for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
+                //for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
                     //Get the suggestion by childing the key of the string you want to get.
-                    String region = suggestionSnapshot.child("region").getValue(String.class);
+                   // String region = suggestionSnapshot.child("region").getValue(String.class);
                     //Add the retrieved string to the list
-                    autoComplete.add(region);
+                    //autoComplete.add(region);
 
 
-                    String name = suggestionSnapshot.child("name").getValue(String.class);
+                   // String name = suggestionSnapshot.child("name").getValue(String.class);
                     //Add the retrieved string to the list
-                    a1.add(name);
+                   // a1.add(name);
 
                     /*String client = suggestionSnapshot.child("client").getValue(String.class);
                     //Add the retrieved string to the list
@@ -129,40 +177,80 @@ public static String abc;
                     //Add the retrieved string to the list
                     a4.add(add);*/
 
-                }
-            }
+               // }
+            //}
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+           // @Override
+            //public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+          //  }
+       // });
 
-       final AutoCompleteTextView e1= (AutoCompleteTextView) findViewById(R.id.e1);
-        e1.setAdapter(autoComplete);
+
+
+
+
+
+
+        //final ArrayAdapter<String> a3 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+       // final ArrayAdapter<String> a4 = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+       // database.child("Clients").addValueEventListener(new ValueEventListener() {
+          //  @Override
+           // public void onDataChange(DataSnapshot dataSnapshot) {
+                //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
+                //for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
+                    //Get the suggestion by childing the key of the string you want to get.
+                    //String name = suggestionSnapshot.child("name").getValue(String.class);
+                    //Add the retrieved string to the list
+                    //a3.add(name);
+
+
+                   // String region = suggestionSnapshot.child("region").getValue(String.class);
+                    //Add the retrieved string to the list
+                   // a4.add(region);
+
+                    /*String client = suggestionSnapshot.child("client").getValue(String.class);
+                    //Add the retrieved string to the list
+                    a3.add(client);
+
+                    String add = suggestionSnapshot.child("add").getValue(String.class);
+                    //Add the retrieved string to the list
+                    a4.add(add);*/
+
+               // }
+            //}
+
+           // @Override
+            //public void onCancelled(DatabaseError databaseError) {
+
+           // }
+        //});
+
+       //final AutoCompleteTextView e1= (AutoCompleteTextView) findViewById(R.id.e1);
+       // e1.setAdapter(autoComplete);
 
        // AutoCompleteTextView ACTV= (AutoCompleteTextView) findViewById(R.id.actv);
         //ACTV.setAdapter(autoComplete);
 
-  final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
-   e2.setAdapter(a1);
+  //final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
+   //e2.setAdapter(a1);
 
-       /*final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
-        e2.setAdapter(a2);
-
-
-      final   AutoCompleteTextView     e3 = (AutoCompleteTextView) findViewById(R.id.e3);
-        e3.setAdapter(a3);
+       //final AutoCompleteTextView     e2 = (AutoCompleteTextView) findViewById(R.id.e2);
+        //e2.setAdapter(a2);
 
 
-     final    AutoCompleteTextView     e4 = (AutoCompleteTextView) findViewById(R.id.e4);
-        e4.setAdapter(a4);*/
+     // final  AutoCompleteTextView     e3 = (AutoCompleteTextView) findViewById(R.id.e3);
+       // e3.setAdapter(a3);
+
+
+    // final    AutoCompleteTextView     e4 = (AutoCompleteTextView) findViewById(R.id.e4);
+       // e4.setAdapter(a4);
 
 
 
         //e2 = (EditText) findViewById(R.id.e2);
-    e3 = (AutoCompleteTextView) findViewById(R.id.e3);
-        e4 = (AutoCompleteTextView) findViewById(R.id.e4);
+    //e3 = (AutoCompleteTextView) findViewById(R.id.e3);
+       // e4 = (AutoCompleteTextView) findViewById(R.id.e4);
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -203,9 +291,32 @@ public static String abc;
                     e4.setError("Address not entered");
                     e4.requestFocus();
                 } else {
-                    sendData();
-                    displayNotification();
-                     Intent i=new Intent(NewCallGen.this,NewCall1.class);
+                    //sendData();
+                    //displayNotification();
+                    //Save the edit text
+
+                    //save the name
+                    String city = e1.getText().toString();
+                    mEditor.putString(getString(R.string.city), city);
+                    mEditor.commit();
+
+
+
+
+                    String name = e2.getText().toString();
+                    mEditor.putString(getString(R.string.name), name);
+                    mEditor.commit();
+
+                    String client = e3.getText().toString();
+                    mEditor.putString(getString(R.string.client), client);
+                    mEditor.commit();
+
+                    String add = e4.getText().toString();
+                    mEditor.putString(getString(R.string.add), add);
+                    mEditor.commit();
+
+
+                    Intent i=new Intent(NewCallGen.this,NewCall1.class);
                     startActivity(i);
                    /* AttemptLogin attemptLogin= new AttemptLogin();
                     attemptLogin.execute(
@@ -224,8 +335,21 @@ public static String abc;
 
     }
 
+    private void checkSharedPreferences() {
 
+        String city = mPreferences.getString(getString(R.string.city), "");
+        String name = mPreferences.getString(getString(R.string.name), "");
 
+        String client = mPreferences.getString(getString(R.string.client), "");
+        String add = mPreferences.getString(getString(R.string.add), "");
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        Log.d("LOGGED", "FirebaseUser: " + user);
+        e1.setText(city);
+        e2.setText(user.getEmail());
+        e3.setText(client);
+        e4.setText(add);
+    }
 
 
     public void displayNotification() {
@@ -311,10 +435,12 @@ public static String abc;
     public void sendData(){
 
 
+
         String e1Text=e1.getText().toString();
         String e2Text=e2.getText().toString();
         String e3Text=e3.getText().toString();
         String e4Text=e4.getText().toString();
+
         //String e5Text=e5.getText().toString();
 
 //String abc[]={e1Text,e2Text,e3Text,e4Text};

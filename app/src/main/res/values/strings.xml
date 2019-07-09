@@ -3,6 +3,12 @@
     <string name="action_settings">Settings</string>
     <string name="tag_prompt1">Choose a Tag</string>
 
+
+    <string name="city">com.mind.bst.city</string>
+    <string name="name">com.mind.bst.name</string>
+    <string name="client">com.mind.bst.client</string>
+    <string name="add">com.mind.bst.add</string>
+
     <string-array name="tag_arrays1">
         <item>Select</item>
         <item>Printer</item>
