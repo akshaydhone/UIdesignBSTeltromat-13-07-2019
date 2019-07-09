@@ -75,11 +75,11 @@ public class NewCall2 extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( getBaseContext());
                 SharedPreferences.Editor prefEditor = prefs.edit();
-                prefEditor.putString("savedValue",s1.getSelectedItem().toString());
+                prefEditor.putString("spinner",s1.getSelectedItem().toString());
 
                 String savedValue=PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext())
-                        .getString("savedValue","");
+                        .getString("spinner","");
 
 
                 for(int i=0;i<5;i++)
@@ -147,7 +147,7 @@ public class NewCall2 extends AppCompatActivity {
                     SharedPreferences prefs;
                     prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor prefEditor = prefs.edit();
-                    prefEditor.putString("savedValue",s1.getSelectedItem().toString());
+                    prefEditor.putString("spinner",s1.getSelectedItem().toString());
                     prefEditor.commit();
 
 
