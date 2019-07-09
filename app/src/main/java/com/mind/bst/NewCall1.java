@@ -38,6 +38,10 @@ import java.util.Calendar;
 public class NewCall1 extends AppCompatActivity {
 
     private static final String TAG = "NewCall1";
+
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     //private static final String TAG = "SecondActivity";
     EditText e1, e2;
 
@@ -75,6 +79,13 @@ public class NewCall1 extends AppCompatActivity {
         s1 = (Spinner) findViewById(R.id.s1);
         b1 = (Button) findViewById(R.id.b1);
 
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("tabian.com.sharedpreferencestest", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
+
+        checkSharedPreferences();
+
+
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = mPreferences.edit();
 
@@ -83,23 +94,43 @@ public class NewCall1 extends AppCompatActivity {
 
         String client = mPreferences.getString(getString(R.string.client), "");
         String add = mPreferences.getString(getString(R.string.add), "");
+        final String date = mDisplayDate.getText().toString();
+        final String time = mDisplayTime.getText().toString();
 
 
 
-        databaseReference=db.getReference("Calls Generated");
+        databaseReference = db.getReference("Calls Generated");
 
         b1.setOnClickListener(new View.OnClickListener() {
+            boolean valid = true;
             @Override
             public void onClick(View v) {
 
 
                 if (e1.getText().toString().trim().length() == 0) {
-                    e1.setError("Email not entered");
+                    e1.setError("Contact not entered");
                     e1.requestFocus();
-                } else if (e2.getText().toString().trim().length() == 0) {
-                    e2.setError("Date not Generated");
+                }
+
+                else if (e2.getText().toString().trim().length() == 0) {
+                    e2.setError("Email not Generated");
                     e2.requestFocus();
-                } else {
+                }
+
+
+               /* else if (date.isEmpty() ) {
+                    mDisplayDate.setError("Set date");
+                    valid = false;
+                }
+
+
+                else if (time.isEmpty() ) {
+                    mDisplayTime.setError("Set time");
+                    valid = false;
+                }*/
+
+
+                else {
 
 
                     //sendData();
@@ -109,6 +140,30 @@ public class NewCall1 extends AppCompatActivity {
                             e2.getText().toString(),
 
                             "");*/
+                    //save contact
+                    String cont = e1.getText().toString();
+                    mEditor.putString(getString(R.string.cont), cont);
+                    mEditor.commit();
+
+
+                    //save email
+                    String email = e2.getText().toString();
+                    mEditor.putString(getString(R.string.email), email);
+                    mEditor.commit();
+
+                    //save date
+                    String date = mDisplayDate.getText().toString();
+                    mEditor.putString(getString(R.string.date), date);
+                    mEditor.commit();
+
+                    //save time
+                    String time =mDisplayTime.getText().toString();
+                    mEditor.putString(getString(R.string.time), time);
+                    mEditor.commit();
+
+
+
+
                     Intent i = new Intent(NewCall1.this, NewCall2.class);
                     startActivity(i);
 
@@ -148,32 +203,54 @@ public class NewCall1 extends AppCompatActivity {
         };
 
 
-        mDisplayTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+            mDisplayTime.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Calendar cal = Calendar.getInstance();
+                    int hour = cal.get(Calendar.HOUR_OF_DAY);
+                    int minutes = cal.get(Calendar.MINUTE);
 
 
-                picker = new TimePickerDialog(NewCall1.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                mDisplayTime.setText(sHour + ":" + sMinute);
-                            }
-                        }, hour, minutes, true);
+                    picker = new TimePickerDialog(NewCall1.this,
+                            new TimePickerDialog.OnTimeSetListener() {
+                                @Override
+                                public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                    mDisplayTime.setText(sHour + ":" + sMinute);
+                                }
+                            }, hour, minutes, true);
 
 
-                picker.show();
+                    picker.show();
 
 
-            }
-        });
+                }
+
+            });
 
 
     }
 
+    private void checkSharedPreferences() {
+
+
+        String cont = mPreferences.getString(getString(R.string.cont), "");
+        String email = mPreferences.getString(getString(R.string.email), "");
+
+
+        String date = mPreferences.getString(getString(R.string.date), "");
+        String time = mPreferences.getString(getString(R.string.time), "");
+
+
+
+
+
+
+
+        e1.setText(cont);
+        e2.setText(email);
+        mDisplayDate.setText(date);
+        mDisplayTime.setText(time);
+    }
 
 
     public void sendData(){

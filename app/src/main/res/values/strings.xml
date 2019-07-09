@@ -8,6 +8,17 @@
     <string name="name">com.mind.bst.name</string>
     <string name="client">com.mind.bst.client</string>
     <string name="add">com.mind.bst.add</string>
+    <string name="cont">com.mind.bst.cont</string>
+    <string name="email">com.mind.bst.email</string>
+    <string name="date">com.mind.bst.date</string>
+    <string name="time">com.mind.bst.time</string>
+
+    <string name="pserial">com.mind.bst.pserial</string>
+    <string name="nature">com.mind.bst.nature</string>
+    <string name="details">com.mind.bst.details</string>
+    <string name="spinner">com.mind.bst.spinner</string>
+    <string name="observation">com.mind.bst.observation</string>
+    <string name="remark">com.mind.bst.remark</string>
 
     <string-array name="tag_arrays1">
         <item>Select</item>

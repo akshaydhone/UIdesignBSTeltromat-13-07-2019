@@ -31,6 +31,7 @@ TextView username;
         b1=(CardView)findViewById(R.id.b1);
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
+
         username=(TextView)findViewById(R.id.username) ;
 
         mAuth = FirebaseAuth.getInstance(); // important Call
@@ -73,6 +74,7 @@ TextView username;
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //starting the intent for next activity
                 Intent i=new Intent(HomeActivity.this,PreviousCallGen.class);
                 startActivity(i);
             }
@@ -80,12 +82,14 @@ TextView username;
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //For getting the next activity
                 Intent i=new Intent(HomeActivity.this,PendingCall.class);
                 startActivity(i);
             }
         });
 
-
+//initializing the onesignal for notification
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
@@ -103,6 +107,9 @@ TextView username;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
+
+
+        //signout function
         switch (id)
         {
             case R.id.signout:

@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -26,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 public class NewCall4 extends AppCompatActivity {
-    ImageView im1;
+    Button im1;
 
     private static final int GALLERY_INTENT = 2;
     public static final int READ_EXTERNAL_STORAGE = 0,MULTIPLE_PERMISSIONS = 10;
@@ -48,10 +49,11 @@ public class NewCall4 extends AppCompatActivity {
         setContentView(R.layout.activity_new_call4);
         getSupportActionBar().setTitle("Payment Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        im1=(ImageView)findViewById(R.id.im1);
+        im1=(Button) findViewById(R.id.im1);
 
 
-        im1.setOnClickListener(new View.OnClickListener() {
+
+       /* im1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -88,7 +90,7 @@ public class NewCall4 extends AppCompatActivity {
 
 
             }
-        });
+        });*/
     }
 
 

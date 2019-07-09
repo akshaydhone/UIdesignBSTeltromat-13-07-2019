@@ -346,7 +346,7 @@ public static String abc;
         FirebaseUser user = mAuth.getCurrentUser();
         Log.d("LOGGED", "FirebaseUser: " + user);
         e1.setText(city);
-        e2.setText(user.getEmail());
+        e2.setText(user.getDisplayName());
         e3.setText(client);
         e4.setText(add);
     }

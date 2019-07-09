@@ -21,6 +21,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HiddenActivity">
+
+
+        </activity>
         <activity android:name=".EngineerList" />
         <activity
             android:name=".ViewEngineers"
@@ -31,11 +35,13 @@
             android:parentActivityName=".AdminActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".splashscreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity
@@ -100,7 +106,7 @@
         <activity
             android:name=".MainChatActivity"
             android:parentActivityName=".AdminActivity" />
-        <activity android:name=".CallList"></activity>
+        <activity android:name=".CallList" />
     </application>
 
 </manifest>

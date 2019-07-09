@@ -51,13 +51,13 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <ImageView
+                    <Button
                         android:id="@+id/im1"
-                        android:layout_width="249dp"
-                        android:layout_height="87dp"
+                        android:layout_width="218dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/cli" />
+                        android:text="Select Image" />
 
                     <TextView
                         android:layout_width="wrap_content"
