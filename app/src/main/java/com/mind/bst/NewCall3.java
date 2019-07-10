@@ -107,6 +107,7 @@ public class NewCall3 extends AppCompatActivity {
 
 
                     String remark = e2.getText().toString();
+
                     mEditor.putString(getString(R.string.remark), remark);
                     mEditor.commit();
 

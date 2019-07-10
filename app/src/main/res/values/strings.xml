@@ -20,6 +20,9 @@
     <string name="spinner1">com.mind.bst.spinner1</string>
     <string name="observation">com.mind.bst.observation</string>
     <string name="remark">com.mind.bst.remark</string>
+    <string name="image">com.mind.bst.image</string>
+    <string name="payment">com.mind.bst.payment</string>
+
 
     <string-array name="tag_arrays1">
         <item>Select</item>
