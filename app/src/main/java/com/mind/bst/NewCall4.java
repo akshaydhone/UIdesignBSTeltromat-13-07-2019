@@ -45,6 +45,9 @@ public class NewCall4 extends AppCompatActivity {
     private ProgressDialog progressDialog;
     //private Firebase mRoofRef;
     private StorageReference mStorage;
+    Intent intent ;
+    public  static final int RequestPermissionCode  = 1 ;
+
 
 
     //private static final int GALLERY_INTENT = 2;
@@ -71,10 +74,11 @@ public class NewCall4 extends AppCompatActivity {
         user_image = (ImageView) findViewById(R.id.user_image);
 
         progressDialog = new ProgressDialog(NewCall4.this);
+        EnableRuntimePermission();
 
 
         //Select Image From External Storage..
-        select_image.setOnClickListener(new View.OnClickListener() {
+       /* select_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -95,7 +99,77 @@ public class NewCall4 extends AppCompatActivity {
             }
 
 
-        });
+        });*/
+
+
+
+       select_image.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               AlertDialog.Builder builder = new AlertDialog.Builder(NewCall4.this);
+               //builder.setMessage("Select Photo");
+               builder.setTitle("Select From");
+
+               builder.setCancelable(false);
+
+               builder.setPositiveButton("Gallery", new DialogInterface
+                                       .OnClickListener() {
+
+                                   @Override
+                                   public void onClick(DialogInterface dialog,
+                                                       int which)
+                                   {
+
+                                       // When the user click yes button
+                                       // then app will close
+                                       //Check for Runtime Permission
+                                       if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                                               != PackageManager.PERMISSION_GRANTED)
+                                       {
+                                           Toast.makeText(getApplicationContext(), "Call for Permission", Toast.LENGTH_SHORT).show();
+                                           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                                           {
+                                               requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_EXTERNAL_STORAGE);
+                                           }
+                                       }
+                                       else
+                                       {
+                                           callgalary();
+                                       }
+
+                                   }
+                               });
+
+
+
+               builder
+                       .setNegativeButton(
+                               "Camera",
+                               new DialogInterface
+                                       .OnClickListener() {
+
+                                   @Override
+                                   public void onClick(DialogInterface dialog,
+                                                       int which)
+                                   {
+
+                                       // If user click no
+                                       // then dialog box is canceled.
+                                       intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
+                                       startActivityForResult(intent, 7);
+
+                                   }
+                               });
+
+               // Create the Alert dialog
+               AlertDialog alertDialog = builder.create();
+
+               // Show the Alert Dialog box
+               alertDialog.show();
+
+           }
+       });
         mStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://uidesignbsteltromat.appspot.com/");
 
 
@@ -143,17 +217,14 @@ public class NewCall4 extends AppCompatActivity {
         });*/
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case READ_EXTERNAL_STORAGE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    callgalary();
-                return;
-        }
-        Toast.makeText(getApplicationContext(), "...", Toast.LENGTH_SHORT).show();
-    }
+
+
+
+
+
+
+
+
 
 
     private void callgalary() {
@@ -196,7 +267,32 @@ public class NewCall4 extends AppCompatActivity {
                 }
             });
         }
+
+        if (requestCode == 7 && resultCode == RESULT_OK) {
+
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+
+            user_image.setImageBitmap(bitmap);
+        }
     }
+
+    public void EnableRuntimePermission(){
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(NewCall4.this,
+                Manifest.permission.CAMERA))
+        {
+
+            Toast.makeText(NewCall4.this,"CAMERA permission allows us to Access CAMERA app", Toast.LENGTH_LONG).show();
+
+        } else {
+
+            ActivityCompat.requestPermissions(NewCall4.this,new String[]{
+                    Manifest.permission.CAMERA}, RequestPermissionCode);
+
+        }
+    }
+
+
 
 
 
@@ -251,6 +347,22 @@ public class NewCall4 extends AppCompatActivity {
     }*/
 
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case READ_EXTERNAL_STORAGE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    callgalary();
+                return;
+        }
+
+
+
+
+        //Toast.makeText(getApplicationContext(), "...", Toast.LENGTH_SHORT).show();
+    }
 
 
 }

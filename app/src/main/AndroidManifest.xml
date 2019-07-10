@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera2" />
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -21,12 +20,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CameraFragment">
+        <activity android:name=".OpenCamera">
+
 
         </activity>
-        <activity android:name=".CameraActivity">
-
-        </activity>
+        <activity android:name=".CameraFragment"></activity>
+        <activity android:name=".CameraActivity"></activity>
         <activity android:name=".HiddenActivity" />
         <activity android:name=".EngineerList" />
         <activity
@@ -38,7 +37,6 @@
             android:parentActivityName=".AdminActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".splashscreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
