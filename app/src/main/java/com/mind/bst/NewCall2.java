@@ -77,13 +77,13 @@ public class NewCall2 extends AppCompatActivity {
                 SharedPreferences.Editor prefEditor = prefs.edit();
                 prefEditor.putString("spinner",s1.getSelectedItem().toString());
 
-                String savedValue=PreferenceManager
+                String spinner=PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext())
                         .getString("spinner","");
 
 
                 for(int i=0;i<5;i++)
-                    if(savedValue.equals(s1.getItemAtPosition(i).toString())){
+                    if(spinner.equals(s1.getItemAtPosition(i).toString())){
                         s1.setSelection(i);
                         break;
                     }

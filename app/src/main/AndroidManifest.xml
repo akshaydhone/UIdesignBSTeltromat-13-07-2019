@@ -21,10 +21,13 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HiddenActivity">
-
+        <activity android:name=".CameraFragment">
 
         </activity>
+        <activity android:name=".CameraActivity">
+
+        </activity>
+        <activity android:name=".HiddenActivity" />
         <activity android:name=".EngineerList" />
         <activity
             android:name=".ViewEngineers"
@@ -41,7 +44,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity

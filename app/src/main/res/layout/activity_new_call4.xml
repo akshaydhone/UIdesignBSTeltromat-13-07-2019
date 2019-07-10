@@ -52,12 +52,25 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/im1"
+                        android:id="@+id/select_image"
                         android:layout_width="218dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:text="Select Image" />
+
+
+                    <ImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="215dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_below="@+id/select_image"
+                        app:srcCompat="@drawable/loading"
+                        />
+
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -162,11 +175,6 @@
     </ScrollView>
 
 
-    <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bottom_nav"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu"/>
+
 
 </RelativeLayout>
