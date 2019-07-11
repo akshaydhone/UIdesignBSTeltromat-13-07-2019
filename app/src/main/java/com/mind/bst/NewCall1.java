@@ -43,7 +43,7 @@ public class NewCall1 extends AppCompatActivity {
     private SharedPreferences.Editor mEditor;
 
     //private static final String TAG = "SecondActivity";
-    EditText e1, e2;
+   public static EditText e1, e2;
 
     FirebaseDatabase db=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -58,10 +58,10 @@ public class NewCall1 extends AppCompatActivity {
     Spinner s1;
     TimePickerDialog picker;
 
-    private TextView mDisplayDate;
+  public static TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-    private TextView mDisplayTime;
+public static TextView mDisplayTime;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
     @Override

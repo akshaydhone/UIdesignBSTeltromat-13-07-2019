@@ -21,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +34,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,8 +46,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.mind.bst.NewCallGen.e1;
+
 public class NewCall4 extends AppCompatActivity {
-    Button select_image,b1;
+
+
+
+    FirebaseDatabase db=FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference;
+    Button select_image,b1,b2;
     ImageView user_image;
     public static final int READ_EXTERNAL_STORAGE = 0;
     private static final int GALLERY_INTENT = 2;
@@ -89,6 +99,7 @@ public class NewCall4 extends AppCompatActivity {
         select_image = (Button)findViewById(R.id.select_image);
         user_image = (ImageView) findViewById(R.id.user_image);
         b1=(Button)findViewById(R.id.b1);
+        b2=(Button)findViewById(R.id.b2);
 
         progressDialog = new ProgressDialog(NewCall4.this);
         EnableRuntimePermission();
@@ -112,6 +123,9 @@ public class NewCall4 extends AppCompatActivity {
         mEditor = mPreferences.edit();
 
         checkSharedPreferences();
+
+
+        databaseReference = db.getReference("Calls Generated");
 
 
 
@@ -174,6 +188,17 @@ public class NewCall4 extends AppCompatActivity {
                 SharedPreferences.Editor prefEditor = prefs.edit();
                 prefEditor.putString("payment",s1.getSelectedItem().toString());
                 prefEditor.commit();
+            }
+        });
+
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+sendData();
+
+
             }
         });
 
@@ -291,6 +316,41 @@ public class NewCall4 extends AppCompatActivity {
 
             }
         });*/
+    }
+
+    private void sendData() {
+
+        String e1Text=NewCallGen.e1.getText().toString();
+        String e2Text=NewCallGen.e2.getText().toString();
+        String e3Text=NewCallGen.e3.getText().toString();
+        String e4Text=NewCallGen.e4.getText().toString();
+
+String e5Text=NewCall1.e1.getText().toString();
+String e6Text=NewCall1.e2.getText().toString();
+String e7Text=NewCall1.mDisplayDate.getText().toString();
+String e8Text=NewCall1.mDisplayTime.getText().toString();
+
+
+String e9Text=NewCall2.e1.getText().toString();
+        String e10Text=NewCall2.e2.getText().toString();
+        String e11Text=NewCall2.e3.getText().toString();
+
+
+        String e12Text=NewCall3.e1.getText().toString();
+        String e13Text=NewCall3.e2.getText().toString();
+
+
+
+        String id=databaseReference.push().getKey();
+
+        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) &&(!TextUtils.isEmpty(e3Text))&& (!TextUtils.isEmpty(e4Text)) &&(!TextUtils.isEmpty(e5Text))&& (!TextUtils.isEmpty(e6Text)) &&(!TextUtils.isEmpty(e7Text))&& (!TextUtils.isEmpty(e8Text)) && (!TextUtils.isEmpty(e9Text))&& (!TextUtils.isEmpty(e10Text)) && (!TextUtils.isEmpty(e11Text)) && (!TextUtils.isEmpty(e12Text)) && (!TextUtils.isEmpty(e13Text)) )
+        {
+           Total data=new Total(id,e1Text,e2Text,e3Text,e4Text,e5Text,e6Text,e7Text,e8Text,e9Text,e10Text,e11Text,e12Text,e13Text);
+            databaseReference.child(id).setValue(data);
+            Toast.makeText(this, "Call generated Successfully", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
     private void checkSharedPreferences() {

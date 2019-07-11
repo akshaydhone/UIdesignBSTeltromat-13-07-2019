@@ -65,8 +65,9 @@ public class NewCallGen extends AppCompatActivity {
 
 
     Button b1;
-    private TextView e2;
-   private EditText e1,e3,e4;
+  public static TextView e2;
+
+   public static EditText e1,e3,e4;
 
     private FirebaseAuth mAuth;
     static String LoggedIn_User_Email;

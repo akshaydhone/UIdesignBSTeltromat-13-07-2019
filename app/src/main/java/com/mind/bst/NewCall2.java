@@ -20,8 +20,8 @@ public class NewCall2 extends AppCompatActivity {
 //step1
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-    Spinner s1;
-    EditText e1,e2,e3,e4;
+   public static Spinner s1;
+    public static EditText e1,e2,e3,e4;
     Button b1;
 
 

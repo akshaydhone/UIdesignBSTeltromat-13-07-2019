@@ -16,7 +16,7 @@ public class NewCall3 extends AppCompatActivity {
     private static final String TAG = "NewCall3";
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-    EditText e1,e2;
+   public static EditText e1,e2;
     Button b1;
     Spinner s1;
 
