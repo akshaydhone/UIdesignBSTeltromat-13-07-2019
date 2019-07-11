@@ -65,6 +65,8 @@ public class NewCall4 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseUser user;
 
+
+
     FirebaseDatabase db=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     Button select_image,b1,b2;
@@ -137,6 +139,13 @@ public class NewCall4 extends AppCompatActivity {
             this.finish();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         }
+
+
+
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //mPreferences = getSharedPreferences("tabian.com.sharedpreferencestest", Context.MODE_PRIVATE);
+        mEditor = mPreferences.edit();
 
 
         progressDialog = new ProgressDialog(NewCall4.this);
@@ -258,6 +267,10 @@ public class NewCall4 extends AppCompatActivity {
                 Intent i=new Intent(NewCall4.this,SuccessActivity.class);
                 startActivity(i);
 
+                //String city = NewCallGen.e1.getText().toString();
+                //mEditor.putString(getString(R.string.city), city);
+                mEditor.clear();
+                mEditor.commit();
 
 
 
