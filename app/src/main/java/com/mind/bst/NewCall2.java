@@ -20,8 +20,9 @@ public class NewCall2 extends AppCompatActivity {
 //step1
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-   public static Spinner s1;
+
     public static EditText e1,e2,e3,e4;
+    public static Spinner s1;
     Button b1;
 
 
@@ -33,10 +34,10 @@ public class NewCall2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_call2);
 
+
       getSupportActionBar().setTitle("Product and complaint details");
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        final Spinner s1 = (Spinner) findViewById(R.id.s1);
-
+  s1 = (Spinner) findViewById(R.id.s1);
 
 
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

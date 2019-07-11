@@ -22,7 +22,9 @@ public class Total {
     String details_of_complaint;
     String engineer_observation;
     String client_remark;
-    //String product_name;
+    String product_name;
+    String status_of_complaint;
+    String payment_via;
 
 
     // String email;
@@ -99,8 +101,19 @@ public class Total {
         return client_remark;
     }
 
+    public String getProduct_name() {
+        return product_name;
+    }
+    public String getStatus_of_complaint() {
+        return status_of_complaint;
+    }
+    public String getPayment_via() {
+        return payment_via;
+    }
 
-    public Total(String data, String city,String engineer,String client,String client_add,String client_cont,String client_email,String date,String time,String product_serial_no,String nature_of_complaint,String details_of_complaint,String engineer_observation,String client_remark) {
+
+
+    public Total(String data, String city,String engineer,String client,String client_add,String client_cont,String client_email,String date,String time,String product_serial_no,String nature_of_complaint,String details_of_complaint,String engineer_observation,String client_remark,String product_name,String status_of_complaint,String payment_via) {
         //this.data = data;
 
         this.city = city;
@@ -116,7 +129,9 @@ public class Total {
         this.details_of_complaint=details_of_complaint;
         this.engineer_observation=engineer_observation;
         this.client_remark=client_remark;
-      //  this.product_name=product_name;
+       this.product_name=product_name;
+       this.status_of_complaint=status_of_complaint;
+       this.payment_via=payment_via;
 
     }
 }

@@ -18,7 +18,7 @@ public class NewCall3 extends AppCompatActivity {
     private SharedPreferences.Editor mEditor;
    public static EditText e1,e2;
     Button b1;
-    Spinner s1;
+    public static Spinner s1;
 
 
     @Override
@@ -34,7 +34,7 @@ public class NewCall3 extends AppCompatActivity {
 
 
         b1=(Button)findViewById(R.id.b1);
-        final Spinner s1 = (Spinner) findViewById(R.id.s1);
+ s1 = (Spinner) findViewById(R.id.s1);
 
 
 

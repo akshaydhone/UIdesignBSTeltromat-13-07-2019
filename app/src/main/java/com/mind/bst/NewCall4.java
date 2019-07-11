@@ -81,7 +81,7 @@ public class NewCall4 extends AppCompatActivity {
     private static final String TAG = "NewCall4";
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-    Spinner s1;
+    public static Spinner s1;
 
 
 
@@ -143,7 +143,7 @@ public class NewCall4 extends AppCompatActivity {
         EnableRuntimePermission();
 
 
-        final Spinner s1 = (Spinner) findViewById(R.id.s1);
+    s1 = (Spinner) findViewById(R.id.s1);
 
 
 
@@ -161,6 +161,9 @@ public class NewCall4 extends AppCompatActivity {
         mEditor = mPreferences.edit();
 
         checkSharedPreferences();
+
+        //String UserID=user.getDisplayName().replace("@","").replace(".","");
+        //DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
 
         databaseReference = db.getReference("Calls Generated");
@@ -250,8 +253,10 @@ public class NewCall4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-sendData();
+                 sendData();
                 displayNotification();
+                Intent i=new Intent(NewCall4.this,SuccessActivity.class);
+                startActivity(i);
 
 
 
@@ -466,13 +471,13 @@ sendData();
         String e3Text=NewCallGen.e3.getText().toString();
         String e4Text=NewCallGen.e4.getText().toString();
 
-String e5Text=NewCall1.e1.getText().toString();
-String e6Text=NewCall1.e2.getText().toString();
-String e7Text=NewCall1.mDisplayDate.getText().toString();
-String e8Text=NewCall1.mDisplayTime.getText().toString();
+          String e5Text=NewCall1.e1.getText().toString();
+          String e6Text=NewCall1.e2.getText().toString();
+          String e7Text=NewCall1.mDisplayDate.getText().toString();
+          String e8Text=NewCall1.mDisplayTime.getText().toString();
 
 
-String e9Text=NewCall2.e1.getText().toString();
+        String e9Text=NewCall2.e1.getText().toString();
         String e10Text=NewCall2.e2.getText().toString();
         String e11Text=NewCall2.e3.getText().toString();
 
@@ -480,13 +485,18 @@ String e9Text=NewCall2.e1.getText().toString();
         String e12Text=NewCall3.e1.getText().toString();
         String e13Text=NewCall3.e2.getText().toString();
 
+        String e14Text=NewCall2.s1.getSelectedItem().toString();
+
+        String e15Text=NewCall3.s1.getSelectedItem().toString();
+        String e16Text=NewCall4.s1.getSelectedItem().toString();
+
 
 
         String id=databaseReference.push().getKey();
 
-        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) &&(!TextUtils.isEmpty(e3Text))&& (!TextUtils.isEmpty(e4Text)) &&(!TextUtils.isEmpty(e5Text))&& (!TextUtils.isEmpty(e6Text)) &&(!TextUtils.isEmpty(e7Text))&& (!TextUtils.isEmpty(e8Text)) && (!TextUtils.isEmpty(e9Text))&& (!TextUtils.isEmpty(e10Text)) && (!TextUtils.isEmpty(e11Text)) && (!TextUtils.isEmpty(e12Text)) && (!TextUtils.isEmpty(e13Text)) )
+        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) &&(!TextUtils.isEmpty(e3Text))&& (!TextUtils.isEmpty(e4Text)) &&(!TextUtils.isEmpty(e5Text))&& (!TextUtils.isEmpty(e6Text)) &&(!TextUtils.isEmpty(e7Text))&& (!TextUtils.isEmpty(e8Text)) && (!TextUtils.isEmpty(e9Text))&& (!TextUtils.isEmpty(e10Text)) && (!TextUtils.isEmpty(e11Text)) && (!TextUtils.isEmpty(e12Text)) && (!TextUtils.isEmpty(e13Text))&& (!TextUtils.isEmpty(e14Text))  && (!TextUtils.isEmpty(e15Text))&& (!TextUtils.isEmpty(e16Text)))
         {
-           Total data=new Total(id,e1Text,e2Text,e3Text,e4Text,e5Text,e6Text,e7Text,e8Text,e9Text,e10Text,e11Text,e12Text,e13Text);
+           Total data=new Total(id,e1Text,e2Text,e3Text,e4Text,e5Text,e6Text,e7Text,e8Text,e9Text,e10Text,e11Text,e12Text,e13Text,e14Text,e15Text,e16Text);
             databaseReference.child(id).setValue(data);
             Toast.makeText(this, "Call generated Successfully", Toast.LENGTH_SHORT).show();
 

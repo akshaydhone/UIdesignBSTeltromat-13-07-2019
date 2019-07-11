@@ -20,12 +20,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpenCamera">
-
-
-        </activity>
-        <activity android:name=".CameraFragment"></activity>
-        <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".SuccessActivity"></activity>
+        <activity android:name=".OpenCamera"></activity>
+        <activity android:name=".CameraFragment" />
+        <activity android:name=".CameraActivity" />
         <activity android:name=".HiddenActivity" />
         <activity android:name=".EngineerList" />
         <activity
