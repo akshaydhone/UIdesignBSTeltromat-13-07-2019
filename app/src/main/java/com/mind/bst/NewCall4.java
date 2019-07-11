@@ -2,17 +2,23 @@ package com.mind.bst;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -34,6 +40,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,16 +49,21 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import static com.mind.bst.NewCallGen.e1;
 
 public class NewCall4 extends AppCompatActivity {
 
-
+    private FirebaseAuth mAuth;
+    FirebaseUser user;
 
     FirebaseDatabase db=FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -69,6 +82,21 @@ public class NewCall4 extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
     Spinner s1;
+
+
+
+
+    public static final String NOTIFICATION_REPLY = "NotificationReply";
+    public static final String CHANNNEL_ID = "SimplifiedCodingChannel";
+    public static final String CHANNEL_NAME = "SimplifiedCodingChannel";
+    public static final String CHANNEL_DESC = "This is a channel for Simplified Coding Notifications";
+
+    public static final String KEY_INTENT_MORE = "keyintentmore";
+    public static final String KEY_INTENT_HELP = "keyintenthelp";
+
+    public static final int REQUEST_CODE_MORE = 100;
+    public static final int REQUEST_CODE_HELP = 101;
+    public static final int NOTIFICATION_ID = 200;
 
     //step1
 //    BitmapDrawable drawable = (BitmapDrawable) user_image.getDrawable();
@@ -101,6 +129,16 @@ public class NewCall4 extends AppCompatActivity {
         b1=(Button)findViewById(R.id.b1);
         b2=(Button)findViewById(R.id.b2);
 
+
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        if(mAuth.getCurrentUser() == null)
+        {
+            //User NOT logged In
+            this.finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
+
+
         progressDialog = new ProgressDialog(NewCall4.this);
         EnableRuntimePermission();
 
@@ -126,6 +164,22 @@ public class NewCall4 extends AppCompatActivity {
 
 
         databaseReference = db.getReference("Calls Generated");
+
+
+
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(CHANNNEL_ID, CHANNEL_NAME, importance);
+            mChannel.setDescription(CHANNEL_DESC);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.RED);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
 
 
 
@@ -197,6 +251,9 @@ public class NewCall4 extends AppCompatActivity {
             public void onClick(View v) {
 
 sendData();
+                displayNotification();
+
+
 
 
             }
@@ -318,6 +375,90 @@ sendData();
         });*/
     }
 
+
+
+
+
+    public void displayNotification() {
+
+
+        // Toast.makeText(this, "Current Recipients is : user1@gmail.com ( Just For Demo )", Toast.LENGTH_SHORT).show();
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                int SDK_INT = android.os.Build.VERSION.SDK_INT;
+                if (SDK_INT > 8) {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                            .permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+                    String send_email;
+
+
+                    //This is a Simple Logic to Send Notification different Device Programmatically....
+                    if (LoginActivity.LoggedIn_User_Email.equals("rahul@gmail.com")) {
+                        send_email = "rajesh@gmail.com";
+                    } else {
+                        send_email = "rahul@gmail.com";
+                    }
+
+                    try {
+                        String jsonResponse;
+
+                        URL url = new URL("https://onesignal.com/api/v1/notifications");
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                        con.setUseCaches(false);
+                        con.setDoOutput(true);
+                        con.setDoInput(true);
+
+                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                        con.setRequestProperty("Authorization", "Basic NmQ5MjFkMTktMTFmZS00M2EyLWEwZTYtZDI5Zjg2NWNhMWZi");
+                        con.setRequestMethod("POST");
+
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Log.d("LOGGED", "FirebaseUser: " + user);
+                       String mesaage_user= user.getDisplayName();
+                        String strJsonBody = "{"
+                                + "\"app_id\": \"ba781941-0da4-4b18-95f7-cd4fe988bf54\","
+
+                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"User_ID\", \"relation\": \"=\", \"value\": \"" + send_email + "\"}],"
+
+                                + "\"data\": {\"foo\": \"bar\"},"
+                                + "\"contents\": {\"en\": \"Call generated by "+mesaage_user+" \"}"
+                                + "}";
+
+
+                        System.out.println("strJsonBody:\n" + strJsonBody  );
+
+                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
+                        con.setFixedLengthStreamingMode(sendBytes.length);
+
+                        OutputStream outputStream = con.getOutputStream();
+                        outputStream.write(sendBytes);
+
+                        int httpResponse = con.getResponseCode();
+                        System.out.println("httpResponse: " + httpResponse);
+
+                        if (httpResponse >= HttpURLConnection.HTTP_OK
+                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
+                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        } else {
+                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
+                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+                            scanner.close();
+                        }
+                        System.out.println("jsonResponse:\n" + jsonResponse);
+
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
     private void sendData() {
 
         String e1Text=NewCallGen.e1.getText().toString();
@@ -400,9 +541,20 @@ String e9Text=NewCall2.e1.getText().toString();
 
         if (requestCode == 7 && resultCode == RESULT_OK) {
 
+            //Uri mImageUri = data.getData();
+            //user_image.setImageURI(mImageUri);
+
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 
             user_image.setImageBitmap(bitmap);
+            //StorageReference filePath = mStorage.child("User_Images").child("gs://uidesignbsteltromat.appspot.com/");
+
+
+
+
+
+
+
         }
     }
 
