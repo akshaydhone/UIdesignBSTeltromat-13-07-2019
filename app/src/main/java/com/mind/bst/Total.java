@@ -25,6 +25,7 @@ public class Total {
     String product_name;
     String status_of_complaint;
     String payment_via;
+    String client_image_url;
 
 
     // String email;
@@ -110,10 +111,13 @@ public class Total {
     public String getPayment_via() {
         return payment_via;
     }
+    public String getClient_image_url() {
+        return client_image_url;
+    }
 
 
 
-    public Total(String data, String city,String engineer,String client,String client_add,String client_cont,String client_email,String date,String time,String product_serial_no,String nature_of_complaint,String details_of_complaint,String engineer_observation,String client_remark,String product_name,String status_of_complaint,String payment_via) {
+    public Total(String data, String city,String engineer,String client,String client_add,String client_cont,String client_email,String date,String time,String product_serial_no,String nature_of_complaint,String details_of_complaint,String engineer_observation,String client_remark,String product_name,String status_of_complaint,String payment_via,String client_image_url) {
         //this.data = data;
 
         this.city = city;
@@ -132,6 +136,7 @@ public class Total {
        this.product_name=product_name;
        this.status_of_complaint=status_of_complaint;
        this.payment_via=payment_via;
+       this.client_image_url=client_image_url;
 
     }
 }

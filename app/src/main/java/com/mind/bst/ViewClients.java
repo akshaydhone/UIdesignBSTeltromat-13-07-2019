@@ -24,7 +24,7 @@ public class ViewClients extends AppCompatActivity {
 
     //here data is a java class name
     List<Data> clients;
-//selecting a database ref
+    //selecting a database ref
     DatabaseReference databaseClients;
 
 
@@ -42,15 +42,15 @@ public class ViewClients extends AppCompatActivity {
 
 
 //storing clients in array list
-       clients = new ArrayList<>();
+        clients = new ArrayList<>();
 
 
-     listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-       @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    }
-});
+            }
+        });
 
 
 
@@ -82,7 +82,7 @@ public class ViewClients extends AppCompatActivity {
                 }
 
                 //creating adapter
-             ClientList artistAdapter = new ClientList(ViewClients.this, clients);
+                ClientList artistAdapter = new ClientList(ViewClients.this, clients);
                 //attaching adapter to the listview
                 listViewClients.setAdapter(artistAdapter);
             }

@@ -49,17 +49,17 @@ TextView username;
         FirebaseUser user = mAuth.getCurrentUser();
         Log.d("LOGGED", "FirebaseUser: " + user);
 
-        /*if (user != null) {
-            username.setText("Welcome, " + user.getEmail());
+        if (user != null) {
+            username.setText("Welcome, " + user.getDisplayName());
 
 
 
-    LoginActivity.LoggedIn_User_Email =user.getEmail();
+    LoginActivity.LoggedIn_User_Email =user.getDisplayName();
 
 
 
 
-        }*/
+        }
 
 
 
@@ -75,8 +75,8 @@ TextView username;
             @Override
             public void onClick(View v) {
                 //starting the intent for next activity
-                Intent i=new Intent(HomeActivity.this,PreviousCallGen.class);
-                startActivity(i);
+               // Intent i=new Intent(HomeActivity.this,PreviousCallGen.class);
+                //startActivity(i);
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {

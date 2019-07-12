@@ -35,6 +35,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -71,6 +72,7 @@ public class NewCall4 extends AppCompatActivity {
     DatabaseReference databaseReference;
     Button select_image,b1,b2;
     ImageView user_image;
+    public static TextView url;
     public static final int READ_EXTERNAL_STORAGE = 0;
     private static final int GALLERY_INTENT = 2;
     private ProgressDialog progressDialog;
@@ -130,6 +132,7 @@ public class NewCall4 extends AppCompatActivity {
         user_image = (ImageView) findViewById(R.id.user_image);
         b1=(Button)findViewById(R.id.b1);
         b2=(Button)findViewById(R.id.b2);
+        url=(TextView)findViewById(R.id.url) ;
 
 
         mAuth = FirebaseAuth.getInstance(); // important Call
@@ -139,8 +142,6 @@ public class NewCall4 extends AppCompatActivity {
             this.finish();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         }
-
-
 
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -261,6 +262,10 @@ public class NewCall4 extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+               // final String mName = title.getText().toString().trim();
+
 
                  sendData();
                 displayNotification();
@@ -502,14 +507,15 @@ public class NewCall4 extends AppCompatActivity {
 
         String e15Text=NewCall3.s1.getSelectedItem().toString();
         String e16Text=NewCall4.s1.getSelectedItem().toString();
+        String e17Text=NewCall4.url.getText().toString();
 
 
 
         String id=databaseReference.push().getKey();
 
-        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) &&(!TextUtils.isEmpty(e3Text))&& (!TextUtils.isEmpty(e4Text)) &&(!TextUtils.isEmpty(e5Text))&& (!TextUtils.isEmpty(e6Text)) &&(!TextUtils.isEmpty(e7Text))&& (!TextUtils.isEmpty(e8Text)) && (!TextUtils.isEmpty(e9Text))&& (!TextUtils.isEmpty(e10Text)) && (!TextUtils.isEmpty(e11Text)) && (!TextUtils.isEmpty(e12Text)) && (!TextUtils.isEmpty(e13Text))&& (!TextUtils.isEmpty(e14Text))  && (!TextUtils.isEmpty(e15Text))&& (!TextUtils.isEmpty(e16Text)))
+        if(!TextUtils.isEmpty(e1Text) && (!TextUtils.isEmpty(e2Text)) &&(!TextUtils.isEmpty(e3Text))&& (!TextUtils.isEmpty(e4Text)) &&(!TextUtils.isEmpty(e5Text))&& (!TextUtils.isEmpty(e6Text)) &&(!TextUtils.isEmpty(e7Text))&& (!TextUtils.isEmpty(e8Text)) && (!TextUtils.isEmpty(e9Text))&& (!TextUtils.isEmpty(e10Text)) && (!TextUtils.isEmpty(e11Text)) && (!TextUtils.isEmpty(e12Text)) && (!TextUtils.isEmpty(e13Text))&& (!TextUtils.isEmpty(e14Text))  && (!TextUtils.isEmpty(e15Text))&& (!TextUtils.isEmpty(e16Text))&& (!TextUtils.isEmpty(e17Text)))
         {
-           Total data=new Total(id,e1Text,e2Text,e3Text,e4Text,e5Text,e6Text,e7Text,e8Text,e9Text,e10Text,e11Text,e12Text,e13Text,e14Text,e15Text,e16Text);
+           Total data=new Total(id,e1Text,e2Text,e3Text,e4Text,e5Text,e6Text,e7Text,e8Text,e9Text,e10Text,e11Text,e12Text,e13Text,e14Text,e15Text,e16Text,e17Text);
             databaseReference.child(id).setValue(data);
             Toast.makeText(this, "Call generated Successfully", Toast.LENGTH_SHORT).show();
 
@@ -535,12 +541,13 @@ public class NewCall4 extends AppCompatActivity {
 
         if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
 
-            Uri mImageUri = data.getData();
+            final Uri mImageUri = data.getData();
             user_image.setImageURI(mImageUri);
-            StorageReference filePath = mStorage.child("User_Images").child(mImageUri.getLastPathSegment());
+            final StorageReference filePath = mStorage.child("User_Images").child(mImageUri.getLastPathSegment());
 
             progressDialog.setMessage("Uploading Image....");
             progressDialog.show();
+
 
             filePath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -558,8 +565,22 @@ public class NewCall4 extends AppCompatActivity {
                             .into(user_image);
                     Toast.makeText(getApplicationContext(), "Updated.", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
+                    String abc= taskSnapshot.getDownloadUrl().toString();
+                    url.setText(abc);
+
                 }
             });
+
+
+            /*url.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Toast.makeText(NewCall4.this, "download " +filePath.getDownloadUrl(), Toast.LENGTH_SHORT).show();
+                    //filePath.getDownloadUrl();
+                   // mStorage.getDownloadUrl();
+                }
+            });*/
         }
 
         if (requestCode == 7 && resultCode == RESULT_OK) {
