@@ -60,7 +60,7 @@ public class CustomAdapter extends BaseAdapter {
             holder.profile_pic = (ImageView) convertView
                     .findViewById(R.id.profile_pic);
             holder.status = (TextView) convertView.findViewById(R.id.status);
-            holder.contactType = (TextView) convertView.findViewById(R.id.contact_type);
+            //holder.contactType = (TextView) convertView.findViewById(R.id.contact_type);
 
 
             convertView.setTag(holder);
