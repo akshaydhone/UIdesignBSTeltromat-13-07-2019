@@ -44,6 +44,9 @@ public class GeneratedCalls extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
+
+
             }
         });
 
@@ -55,6 +58,7 @@ public class GeneratedCalls extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
         //attaching value event listener
         databaseClients.addValueEventListener(new ValueEventListener() {

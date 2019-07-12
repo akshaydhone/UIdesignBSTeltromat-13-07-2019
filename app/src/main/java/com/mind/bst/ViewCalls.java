@@ -46,6 +46,7 @@ public class ViewCalls extends ArrayAdapter<DisplayCalls> {
        // textViewAdd.setText(data.getAddress());
         //textViewCont.setText(data.getContact());
         textViewRegion.setText(data.getCity());
+      //  imageViewPic.setImageBitmap();
         //textViewEmail.setText(data.getEmail());
 
 

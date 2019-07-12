@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClientList">
-
-
-
+    tools:context=".RetrieveImg">
     <TextView
         android:id="@+id/textRegion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-android:textStyle="bold"
+        android:textStyle="bold"
         android:padding="10dp"
         android:text="Mumbai" />
 
@@ -22,7 +19,6 @@ android:textStyle="bold"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_below="@id/textRegion"
-
         android:text="Akshay Dhone" />
 
     <TextView
@@ -31,7 +27,6 @@ android:textStyle="bold"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_below="@id/textName"
-
         android:text="Andheri" />
 
     <TextView
@@ -40,7 +35,6 @@ android:textStyle="bold"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_below="@id/textAdd"
-
         android:text="9098987890" />
 
     <TextView
@@ -51,7 +45,6 @@ android:textStyle="bold"
         android:layout_below="@id/textCont"
 
         android:text="akshay@gmail.com" />
-
 
 
 

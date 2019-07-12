@@ -215,7 +215,10 @@ public class NewCall4 extends AppCompatActivity {
                     }
             }
             @Override
-            public void onNothingSelected(AdapterView<?> parent){}
+            public void onNothingSelected(AdapterView<?> parent){
+
+
+            }
         });
 
 
@@ -531,6 +534,9 @@ public class NewCall4 extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, GALLERY_INTENT);
+
+
+
     }
 
 
@@ -563,6 +569,7 @@ public class NewCall4 extends AppCompatActivity {
                             .placeholder(R.drawable.loading)
                             .diskCacheStrategy(DiskCacheStrategy.RESULT)
                             .into(user_image);
+
                     Toast.makeText(getApplicationContext(), "Updated.", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                     String abc= taskSnapshot.getDownloadUrl().toString();

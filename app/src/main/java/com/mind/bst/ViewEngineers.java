@@ -27,17 +27,23 @@ public class ViewEngineers extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_engineers);
         getSupportActionBar().setTitle("View Engineer");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         databaseClients = FirebaseDatabase.getInstance().getReference("Engineers");
         listViewClients = (ListView) findViewById(R.id.listViewClients);
 
 
         clients = new ArrayList<>();
+
         listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
