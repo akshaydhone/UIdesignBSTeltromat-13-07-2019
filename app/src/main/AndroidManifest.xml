@@ -20,10 +20,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RetrieveImg"></activity>
+        <activity android:name=".GenAct"></activity>
+        <activity android:name=".GeneratedList" ></activity>
+        <activity android:name=".RetrieveImg" />
         <activity
             android:name=".GeneratedCalls"
-            android:parentActivityName=".AdminActivity"></activity>
+            android:parentActivityName=".AdminActivity" />
         <activity android:name=".ViewCalls" />
         <activity android:name=".SuccessActivity" />
         <activity android:name=".OpenCamera" />

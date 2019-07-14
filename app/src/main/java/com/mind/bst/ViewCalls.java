@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ViewCalls extends ArrayAdapter<DisplayCalls> {
+public class ViewCalls extends ArrayAdapter<Total> {
     private Activity context;
-    List<DisplayCalls> clients;
+    List<Total> clients;
 
-    public ViewCalls(Activity context, List<DisplayCalls> clients) {
+    public ViewCalls(Activity context, List<Total> clients) {
         super(context, R.layout.activity_view_calls, clients);
         this.context = context;
         this.clients = clients;
@@ -41,7 +41,7 @@ public class ViewCalls extends ArrayAdapter<DisplayCalls> {
 //        TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);
 
 
-        DisplayCalls data = clients.get(position);
+        Total data = clients.get(position);
         textViewName.setText(data.getEngineer());
        // textViewAdd.setText(data.getAddress());
         //textViewCont.setText(data.getContact());

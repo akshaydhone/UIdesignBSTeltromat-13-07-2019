@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GeneratedList">
+
+
+
+    <TextView
+        android:id="@+id/textRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Mumbai" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textRegion"
+
+        android:text="Akshay Dhone" />
+
+    <TextView
+        android:id="@+id/textAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textName"
+
+        android:text="Andheri" />
+
+    <TextView
+        android:id="@+id/textCont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textAdd"
+
+        android:text="9098987890" />
+
+    <TextView
+        android:id="@+id/textEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textCont"
+
+        android:text="akshay@gmail.com" />
+
+
+
+    <TextView
+        android:id="@+id/textclientimgurl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textEmail"
+
+        android:text="https://www.google.com" />
+
+
+
+    <TextView
+        android:id="@+id/textclientremark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textclientimgurl"
+
+        android:text="Average" />
+
+
+
+
+    <TextView
+        android:id="@+id/textclientdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textclientremark"
+
+        android:text="13/7/2019" />
+
+
+
+    <TextView
+        android:id="@+id/textdetailofcomplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textclientdate"
+
+        android:text="Need to send factory" />
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/textenggname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textdetailofcomplaint"
+
+        android:text="Shakti khanna" />
+
+
+
+
+    <TextView
+        android:id="@+id/textenggobservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textenggname"
+
+        android:text="Good" />
+
+
+
+    <TextView
+        android:id="@+id/textnatureofcomplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textenggobservation"
+
+        android:text="Nice" />
+
+
+
+    <TextView
+        android:id="@+id/textpaymentvia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textnatureofcomplaint"
+
+        android:text="cheque" />
+
+
+
+    <TextView
+        android:id="@+id/textproductname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textpaymentvia"
+
+        android:text="Printer" />
+
+
+
+
+    <TextView
+        android:id="@+id/productserialno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/textproductname"
+
+        android:text="98562547" />
+
+
+
+    <TextView
+        android:id="@+id/statusofcomplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/productserialno"
+
+        android:text="under-repaired" />
+
+
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/statusofcomplaint"
+
+        android:text="8:40" />
+
+
+</RelativeLayout>
