@@ -20,7 +20,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GenAct"></activity>
+        <activity android:name=".GenAct"
+            android:parentActivityName=".GeneratedCalls"></activity>
         <activity android:name=".GeneratedList" ></activity>
         <activity android:name=".RetrieveImg" />
         <activity
@@ -31,7 +32,10 @@
         <activity android:name=".OpenCamera" />
         <activity android:name=".CameraFragment" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".HiddenActivity" />
+        <activity android:name=".HiddenActivity" >
+
+
+        </activity>
         <activity android:name=".EngineerList" />
         <activity
             android:name=".ViewEngineers"
@@ -47,6 +51,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity

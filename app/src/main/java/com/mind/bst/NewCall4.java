@@ -421,6 +421,10 @@ public class NewCall4 extends AppCompatActivity {
                     String send_email;
 
 
+
+
+
+
                     //This is a Simple Logic to Send Notification different Device Programmatically....
                     if (LoginActivity.LoggedIn_User_Email.equals("rahul@gmail.com")) {
                         send_email = "rajesh@gmail.com";
@@ -511,6 +515,7 @@ public class NewCall4 extends AppCompatActivity {
         String e15Text=NewCall3.s1.getSelectedItem().toString();
         String e16Text=NewCall4.s1.getSelectedItem().toString();
         String e17Text=NewCall4.url.getText().toString();
+
 
 
 

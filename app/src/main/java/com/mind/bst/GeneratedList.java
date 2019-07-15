@@ -1,13 +1,17 @@
 package com.mind.bst;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.net.URL;
 import java.util.List;
 
 public class GeneratedList extends ArrayAdapter<Total> {
@@ -34,6 +38,7 @@ public class GeneratedList extends ArrayAdapter<Total> {
 
         TextView textViewEmail = (TextView) listViewItem.findViewById(R.id.textEmail);
         TextView textViewUrl=(TextView)listViewItem.findViewById(R.id.textclientimgurl);
+        textViewUrl.setMovementMethod(LinkMovementMethod.getInstance());
         TextView textViewRemark = (TextView) listViewItem.findViewById(R.id.textclientremark);
 
 
@@ -80,6 +85,8 @@ public class GeneratedList extends ArrayAdapter<Total> {
         textViewStatus.setText(data.getStatus_of_complaint());
         textViewPayment.setText(data.getPayment_via());
         textViewUrl.setText(data.getClient_image_url());
+
+
 
 
 

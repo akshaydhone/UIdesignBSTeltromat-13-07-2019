@@ -26,6 +26,8 @@ public class GenAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gen);
+        getSupportActionBar().setTitle("Call Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         databaseClients = FirebaseDatabase.getInstance().getReference("Calls Generated");

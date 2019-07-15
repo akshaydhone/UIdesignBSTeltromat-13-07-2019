@@ -62,7 +62,7 @@ public class GeneratedCalls extends AppCompatActivity {
 
         databaseClients = FirebaseDatabase.getInstance().getReference("Calls Generated");
         listViewClients=(ListView)findViewById(R.id.listViewClients);
-       // listViewClients1=(ListView)findViewById(R.id.listViewClients);
+        // listViewClients1=(ListView)findViewById(R.id.listViewClients);
 
         clients = new ArrayList<>();
         //clients1 = new ArrayList<>();
@@ -73,7 +73,7 @@ public class GeneratedCalls extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
 
-              Total data = clients.get(i);
+                Total data = clients.get(i);
 
                 //creating an intent
                 Intent intent = new Intent(getApplicationContext(), GenAct.class);
@@ -151,10 +151,10 @@ public class GeneratedCalls extends AppCompatActivity {
                 listViewClients.setAdapter(artistAdapter);
 
 
-              //  GeneratedList artistAdapter1 = new GeneratedList(GeneratedCalls.this, clients);
+                //  GeneratedList artistAdapter1 = new GeneratedList(GeneratedCalls.this, clients);
                 //GeneratedList artistAdapter1 = new GeneratedList(GeneratedCalls.this, clients);
                 //attaching adapter to the listview
-               // listViewClients.setAdapter(artistAdapter1);
+                // listViewClients.setAdapter(artistAdapter1);
                 //listViewClients1.setAdapter(artistAdapter1);
             }
 

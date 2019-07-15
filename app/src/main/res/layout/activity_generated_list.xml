@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_below="@id/textEmail"
-
+        android:autoLink="web"
         android:text="https://www.google.com" />
 
 
