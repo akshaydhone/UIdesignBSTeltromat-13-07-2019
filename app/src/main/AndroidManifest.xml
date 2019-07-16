@@ -32,7 +32,8 @@
         <activity android:name=".OpenCamera" />
         <activity android:name=".CameraFragment" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".HiddenActivity" >
+        <activity android:name=".HiddenActivity"
+            android:parentActivityName=".AdminActivity">
 
 
         </activity>

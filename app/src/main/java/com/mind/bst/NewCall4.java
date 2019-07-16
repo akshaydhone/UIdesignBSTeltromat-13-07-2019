@@ -546,73 +546,7 @@ public class NewCall4 extends AppCompatActivity {
 
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
-
-            final Uri mImageUri = data.getData();
-            user_image.setImageURI(mImageUri);
-            final StorageReference filePath = mStorage.child("User_Images").child(mImageUri.getLastPathSegment());
-
-            progressDialog.setMessage("Uploading Image....");
-            progressDialog.show();
-
-
-            filePath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    Uri downloadUri = taskSnapshot.getDownloadUrl();  //Ignore This error
-
-                    //mRoofRef.child("Image_URL").setValue(downloadUri.toString());
-
-                    Glide.with(getApplicationContext())
-                            .load(downloadUri)
-                            .crossFade()
-                            .placeholder(R.drawable.loading)
-                            .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                            .into(user_image);
-
-                    Toast.makeText(getApplicationContext(), "Updated.", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                    String abc= taskSnapshot.getDownloadUrl().toString();
-                    url.setText(abc);
-
-                }
-            });
-
-
-            /*url.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Toast.makeText(NewCall4.this, "download " +filePath.getDownloadUrl(), Toast.LENGTH_SHORT).show();
-                    //filePath.getDownloadUrl();
-                   // mStorage.getDownloadUrl();
-                }
-            });*/
-        }
-
-        if (requestCode == 7 && resultCode == RESULT_OK) {
-
-            //Uri mImageUri = data.getData();
-            //user_image.setImageURI(mImageUri);
-
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-
-            user_image.setImageBitmap(bitmap);
-            //StorageReference filePath = mStorage.child("User_Images").child("gs://uidesignbsteltromat.appspot.com/");
-
-
-
-
-
-
-
-        }
-    }
 
     public void EnableRuntimePermission(){
 

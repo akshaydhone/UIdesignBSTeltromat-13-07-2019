@@ -1,11 +1,15 @@
 package com.mind.bst;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +24,7 @@ public class GenAct extends AppCompatActivity {
     List<Total> clients;
 
     DatabaseReference databaseClients;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -33,6 +38,16 @@ public class GenAct extends AppCompatActivity {
         databaseClients = FirebaseDatabase.getInstance().getReference("Calls Generated");
         listViewClients = (ListView) findViewById(R.id.listViewClients);
         clients = new ArrayList<>();
+
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        //Again check if the user is Already Logged in or Not
+
+        if(mAuth.getCurrentUser() == null)
+        {
+            //User NOT logged In
+            this.finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
 
         listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -62,6 +77,9 @@ public class GenAct extends AppCompatActivity {
                     //getting artist
                     Total data = postSnapshot.getValue(Total.class);
                     //adding artist to the list
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Log.d("LOGGED", "FirebaseUser: " + user);
+                    postSnapshot.child(user.getUid());
                     clients.add(data);
 
                 }

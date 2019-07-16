@@ -1,15 +1,22 @@
 package com.mind.bst;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import java.net.URL;
 import java.util.List;
@@ -17,11 +24,14 @@ import java.util.List;
 public class GeneratedList extends ArrayAdapter<Total> {
     private Activity context;
     List<Total> clients;
+    private FirebaseAuth mAuth;
 
     public GeneratedList(Activity context, List<Total> clients) {
         super(context, R.layout.activity_generated_list, clients);
         this.context = context;
         this.clients = clients;
+
+
     }
 
 
@@ -37,8 +47,8 @@ public class GeneratedList extends ArrayAdapter<Total> {
         TextView textViewCont = (TextView) listViewItem.findViewById(R.id.textCont);
 
         TextView textViewEmail = (TextView) listViewItem.findViewById(R.id.textEmail);
-        TextView textViewUrl=(TextView)listViewItem.findViewById(R.id.textclientimgurl);
-        textViewUrl.setMovementMethod(LinkMovementMethod.getInstance());
+     ImageView textViewUrl=(ImageView) listViewItem.findViewById(R.id.textclientimgurl);
+        //textViewUrl.setMovementMethod(LinkMovementMethod.getInstance());
         TextView textViewRemark = (TextView) listViewItem.findViewById(R.id.textclientremark);
 
 
@@ -66,7 +76,15 @@ public class GeneratedList extends ArrayAdapter<Total> {
         TextView textViewTime = (TextView) listViewItem.findViewById(R.id.time);
 
 
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        //Again check if the user is Already Logged in or Not
+
+
+
+
         Total data = clients.get(position);
+        FirebaseUser user = mAuth.getCurrentUser();
+        Log.d("LOGGED", "FirebaseUser: " + user);
 
         textViewRegion.setText(data.getCity());
         textViewEnggName.setText(data.getEngineer());
@@ -84,7 +102,8 @@ public class GeneratedList extends ArrayAdapter<Total> {
         textViewProductName.setText(data.getProduct_name());
         textViewStatus.setText(data.getStatus_of_complaint());
         textViewPayment.setText(data.getPayment_via());
-        textViewUrl.setText(data.getClient_image_url());
+       // textViewUrl.setText(data.getClient_image_url());
+        Picasso.with(context).load(data.getClient_image_url().toString()).into(textViewUrl);
 
 
 
