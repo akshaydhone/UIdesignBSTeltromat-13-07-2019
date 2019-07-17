@@ -28,4 +28,8 @@
     <color name="black_overlay">#66000000</color>
 
 
+    <color name="graylight">#fff</color>
+    <color name="startblue">#2FB4FF</color>
+    <color name="endblue">#7c4dff</color>
+
 </resources>

@@ -46,13 +46,14 @@ public class HiddenActivity extends AppCompatActivity {
     private EditText email,password,name,eregion,eadd,econt;
     private Button  signup,select_image;
     FirebaseUser user;
-    ImageView user_image;
+    public static ImageView user_image;
     public static TextView url;
     static String LoggedIn_User_Email;
+
     private static final int GALLERY_INTENT = 2;
     public static FirebaseDatabase mDatabase;
     private ProgressDialog progressDialog;
-    //private Firebase mRoofRef;
+    //private FirebaseDatabase mRoofRef;
     private StorageReference mStorage;
     Intent intent ;
 
@@ -114,7 +115,7 @@ public class HiddenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String getemail = email.getText().toString().trim();
+              String getemail = email.getText().toString().trim();
                 String getepassword = password.getText().toString().trim();
 
 

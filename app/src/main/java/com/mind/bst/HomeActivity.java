@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.onesignal.OneSignal;
 
 public class HomeActivity extends AppCompatActivity {
-CardView b1,b2,b3;
+CardView b1,b2,b3,b4;
 LinearLayout ll;
 TextView username;
     private FirebaseAuth mAuth;
@@ -31,6 +31,7 @@ TextView username;
         b1=(CardView)findViewById(R.id.b1);
         b2=(CardView)findViewById(R.id.b2);
         b3=(CardView)findViewById(R.id.b3);
+        b4=(CardView)findViewById(R.id.b4);
 
         username=(TextView)findViewById(R.id.username) ;
 
@@ -85,6 +86,16 @@ TextView username;
 
                 //For getting the next activity
                 Intent i=new Intent(HomeActivity.this,PendingCall.class);
+                startActivity(i);
+            }
+        });
+
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //For getting the next activity
+                Intent i=new Intent(HomeActivity.this,ViewProfile.class);
                 startActivity(i);
             }
         });
