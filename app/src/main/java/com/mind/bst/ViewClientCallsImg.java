@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class ViewCalls extends ArrayAdapter<Total> {
+public class ViewClientCallsImg extends ArrayAdapter<Total> {
     private Activity context;
     HttpURLConnection client = null;
     List<Total> clients;
@@ -34,14 +34,14 @@ public class ViewCalls extends ArrayAdapter<Total> {
 
 
 
-   //String url="https://firebasestorage.googleapis.com/v0/b/uidesignbsteltromat.appspot.com/o/User_Images%2F313843?alt=media&token=2b043092-f79e-4d9c-a649-4cc1c8e6ad9b";
+    //String url="https://firebasestorage.googleapis.com/v0/b/uidesignbsteltromat.appspot.com/o/User_Images%2F313843?alt=media&token=2b043092-f79e-4d9c-a649-4cc1c8e6ad9b";
     //String url="";
 
 
 
 
-    public ViewCalls(Activity context, List<Total> clients) {
-        super(context, R.layout.activity_view_calls, clients);
+    public ViewClientCallsImg(Activity context, List<Total> clients) {
+        super(context, R.layout.activity_view_client_calls_img, clients);
         this.context = context;
         this.clients = clients;
     }
@@ -50,7 +50,7 @@ public class ViewCalls extends ArrayAdapter<Total> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.activity_view_calls, null, true);
+        View listViewItem = inflater.inflate(R.layout.activity_view_client_calls_img, null, true);
 
         TextView textViewRegion = (TextView) listViewItem.findViewById(R.id.status);
         TextView textViewName = (TextView) listViewItem.findViewById(R.id.member_name);
@@ -70,7 +70,7 @@ public class ViewCalls extends ArrayAdapter<Total> {
         // String abc= Total.client_image_url;
 
 
-       // loadImageFromUrl(url);
+        // loadImageFromUrl(url);
 
 
 
@@ -83,10 +83,10 @@ public class ViewCalls extends ArrayAdapter<Total> {
 
         Total data = clients.get(position);
         //UserInformation data1=clients1.get(position);
-        textViewName.setText(data.getEngineer());
+        textViewName.setText(data.getClient());
         // textViewAdd.setText(data.getAddress());
         //textViewCont.setText(data.getContact());
-        textViewRegion.setText(data.getCity());
+        textViewRegion.setText(data.getDate());
         Picasso.with(context).load(data.getClient_image_url().toString()).into(imageView);
         // imageView.setImageBitmap(bitmap);
 

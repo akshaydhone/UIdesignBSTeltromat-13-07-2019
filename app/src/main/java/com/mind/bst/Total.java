@@ -30,6 +30,7 @@ public class Total {
     String status_of_complaint;
     String payment_via;
  String client_image_url;
+
  //private String Image;
 
  //ImageView client_image;

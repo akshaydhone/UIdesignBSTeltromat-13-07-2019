@@ -1,8 +1,9 @@
 package com.mind.bst;
 
-import android.provider.ContactsContract;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,48 +19,44 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewProfile extends AppCompatActivity {
-
-    public static final String CLIENT_NAME = "com.mind.bst.clientname";
-    public static final String CLIENT_ID = "com.mind.bst.clientid";
+public class ActualPrevCall extends AppCompatActivity {
     ListView listViewClients;
+    List<Total> clients;
 
-    //here data is a java class name
-    List<UserInformation> clients;
-    //selecting a database ref
     DatabaseReference databaseClients;
-    FirebaseUser user;
-    String uid;
+    private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_profile);
-        getSupportActionBar().setTitle("View Profile");
+        setContentView(R.layout.activity_actual_prev_call);
+        getSupportActionBar().setTitle("Call Details");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //getting the root name database table
-        databaseClients = FirebaseDatabase.getInstance().getReference("Users");
-        //listViewClients = (ListView) findViewById(R.id.listViewClients);
-        listViewClients=(ListView)findViewById(R.id.listViewClients);
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        uid=user.getUid();
 
-
-//storing clients in array list
+        databaseClients = FirebaseDatabase.getInstance().getReference("Calls Generated");
+        listViewClients = (ListView) findViewById(R.id.listViewClients);
         clients = new ArrayList<>();
 
+        mAuth = FirebaseAuth.getInstance(); // important Call
+        //Again check if the user is Already Logged in or Not
+
+        if(mAuth.getCurrentUser() == null)
+        {
+            //User NOT logged In
+            this.finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+        }
 
         listViewClients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             }
         });
-
-
-
 
     }
 
@@ -70,9 +67,6 @@ public class ViewProfile extends AppCompatActivity {
         //attaching value event listener
         databaseClients.addValueEventListener(new ValueEventListener() {
             @Override
-
-
-            //when a data is changed reflect it into the database
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //clearing the previous artist list
@@ -80,26 +74,26 @@ public class ViewProfile extends AppCompatActivity {
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //gettingclients
-                    UserInformation data = postSnapshot.getValue(UserInformation.class);
-                    //adding clients to the list
+                    //getting artist
+                    Total data = postSnapshot.getValue(Total.class);
+                    //adding artist to the list
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Log.d("LOGGED", "FirebaseUser: " + user);
+                    postSnapshot.child(user.getUid());
                     clients.add(data);
 
                 }
 
                 //creating adapter
-                ProfileActivity artistAdapter = new ProfileActivity(ViewProfile.this, clients);
+                PrevImg artistAdapter = new PrevImg(ActualPrevCall.this, clients);
                 //attaching adapter to the listview
                 listViewClients.setAdapter(artistAdapter);
             }
 
-
-            //providing error if data not matched or database error
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
-
 }

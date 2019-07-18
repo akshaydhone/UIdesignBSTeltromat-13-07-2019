@@ -26,6 +26,7 @@
     <color name="pink">#fe104d</color>
     <color name="colorSelected">#fbffff</color>
     <color name="black_overlay">#66000000</color>
+    <color name="gray_light">#CCCCCC</color>
 
 
     <color name="graylight">#fff</color>

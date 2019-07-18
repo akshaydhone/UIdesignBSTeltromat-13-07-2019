@@ -66,11 +66,11 @@ public class HiddenActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        if (mDatabase == null) {
+        /*if (mDatabase == null) {
             mDatabase = FirebaseDatabase.getInstance();
             //mDatabase.setPersistenceEnabled(true);
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        }
+        }*/
 
 
         mAuth = FirebaseAuth.getInstance(); // important Call
@@ -109,16 +109,12 @@ public class HiddenActivity extends AppCompatActivity {
         }
 
 
-
-
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
               String getemail = email.getText().toString().trim();
                 String getepassword = password.getText().toString().trim();
-
-
 
                 String getname = name.getText().toString().trim();
                 String getregion = eregion.getText().toString().trim();
@@ -176,7 +172,6 @@ public class HiddenActivity extends AppCompatActivity {
 
 
         mStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://uidesignbsteltromat.appspot.com/");
-
 
 
 

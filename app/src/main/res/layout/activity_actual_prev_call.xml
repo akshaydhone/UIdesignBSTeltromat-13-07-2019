@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewProfile">
+    tools:context=".ActualPrevCall">
+
 
 
     <ListView
         android:id="@+id/listViewClients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"></ListView>
+        android:layout_below="@+id/textView"></ListView>
 
 
 </RelativeLayout>

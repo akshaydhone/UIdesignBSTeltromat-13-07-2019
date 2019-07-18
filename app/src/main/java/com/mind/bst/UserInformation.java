@@ -7,7 +7,7 @@ public class UserInformation {
     private String Address;
     private String Contact;
     private String Email;
-    private String Image_Url;
+private String Image_Url;
 
 
 

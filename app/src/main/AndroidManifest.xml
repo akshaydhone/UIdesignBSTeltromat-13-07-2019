@@ -20,8 +20,20 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewProfile"
-            android:parentActivityName=".HomeActivity"></activity>
+        <activity android:name=".sampleAct"></activity>
+        <activity
+            android:name=".ActualPrevCall"
+            android:parentActivityName=".PrevActual" />
+        <activity android:name=".ViewClientCallsImg" />
+        <activity
+            android:name=".PrevActual"
+            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".PrevImg">
+
+        </activity>
+        <activity
+            android:name=".ViewProfile"
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".ProfileActivity"
             android:parentActivityName=".HomeActivity" />

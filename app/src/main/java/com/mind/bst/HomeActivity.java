@@ -75,6 +75,9 @@ TextView username;
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent i=new Intent(HomeActivity.this,PrevActual.class);
+                startActivity(i);
                 //starting the intent for next activity
                // Intent i=new Intent(HomeActivity.this,PreviousCallGen.class);
                 //startActivity(i);
@@ -85,8 +88,8 @@ TextView username;
             public void onClick(View v) {
 
                 //For getting the next activity
-                Intent i=new Intent(HomeActivity.this,PendingCall.class);
-                startActivity(i);
+                //Intent i=new Intent(HomeActivity.this,PendingCall.class);
+                //startActivity(i);
             }
         });
 
