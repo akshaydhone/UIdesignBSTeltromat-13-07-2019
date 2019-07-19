@@ -20,7 +20,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sampleAct"></activity>
+        <activity android:name=".sampleAct">
+
+
+        </activity>
         <activity
             android:name=".ActualPrevCall"
             android:parentActivityName=".PrevActual" />
@@ -28,7 +31,8 @@
         <activity
             android:name=".PrevActual"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".PrevImg">
+        <activity android:name=".PrevImg"
+            android:windowSoftInputMode="adjustPan" >
 
         </activity>
         <activity
@@ -68,6 +72,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity

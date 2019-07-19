@@ -91,7 +91,7 @@ public class PrevImg extends ArrayAdapter<Total> {
 //        textViewDate.setText(data.getDate());
         textViewTime.setText(data.getTime());
         textViewProductSrNo.setText(data.getProduct_serial_no());
-        textViewNatureOfComp.setText(data.getNature_of_complaint());
+       textViewNatureOfComp.setText(data.getNature_of_complaint());
         textViewComplaint.setText(data.getDetails_of_complaint());
         textViewEnggObs.setText(data.getEngineer_observation());
         textViewRemark.setText(data.getClient_remark());
@@ -108,4 +108,7 @@ public class PrevImg extends ArrayAdapter<Total> {
 
         return listViewItem;
     }
+
+
+
 }

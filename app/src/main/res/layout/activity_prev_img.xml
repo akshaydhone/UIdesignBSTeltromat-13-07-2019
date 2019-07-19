@@ -6,6 +6,8 @@
     tools:context=".PrevImg"
     android:background="@color/graylight"
     android:orientation="vertical">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="270dp">
@@ -46,302 +48,337 @@
     <!-- Here starts scrolling - view all content -->
 
 
+
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
 
-
-    <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/t1"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Engineer Name :"
-        android:layout_gravity="start"
-                android:textStyle="bold"
-                android:textColor="#000" />
-
-
-            <TextView
-                android:id="@+id/textenggname"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="-27dp"
-
-                android:text="Rahul Kumar"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-    <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:id="@+id/b1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/t2"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Engineer Region:"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/textRegion"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="-27dp"
-
-                android:text="Chennai"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-
-
-
-
-    <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/t3"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Client Address:"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/textAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="-27dp"
-
-                android:text="MG road,Perrampur"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-
-    <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/t4"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Client Contact No:"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/textCont"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="-27dp"
-
-                android:text="9878765456"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-
-
-    <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/t5"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Client Email-Id:"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/textEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="-27dp"
-
-                android:text="ashish@gmail.com"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
+        android:layout_margin="20dp">
+        <RelativeLayout
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-            <LinearLayout
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/t6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-
-                    android:layout_gravity="start"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Engineer's In time"
-                    android:textColor="#000"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="-27dp"
-
-                    android:text="10:09"
-                    android:textColor="#000" />
-
-                <View
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="50dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+                    <requestFocus/>
 
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Engineer Name"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/textenggname"
+                        android:editable="false"
+                        android:text="Rahul Kumar"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Engineer Region"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/textRegion"
+                        android:editable="false"
+                        android:text="Chennai"
+
+                        />
 
 
-    </ScrollView>
 
+                    <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Client Address"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textAdd"
+                         android:text="MG Road"
+                         android:editable="false"
+
+                         />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Client Contact No"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textCont"
+                         android:editable="false"
+                         android:text="9898765432"
+
+                         />
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Client Email-Id"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textEmail"
+                         android:text="rj13@gmail.com"
+                         android:editable="false"
+
+                         />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Engineer's In-Time"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/time"
+                         android:editable="false"
+                         android:text="10:09"
+                         />
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Product Name"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textproductname"
+                         android:text="MotherBoard"
+                         android:editable="false"
+
+                         />
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Product Serial No"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/productserialno"
+                         android:editable="false"
+                         android:text="36576523"
+
+                         />
+
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Nature Of Complaint"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textnatureofcomplaint"
+                         android:editable="false"
+                         android:text="Internal Damage" />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Details Of Complaint"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textdetailofcomplaint"
+                         android:editable="false"
+                         android:text="Parts inside the product heavily damaged"
+                         />
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Status Of Complaint"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/statusofcomplaint"
+                         android:editable="false"
+                         android:text="Need to send to Factory"
+
+                         />
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Engineer Observation"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textenggobservation"
+                         android:editable="false"
+                         android:text="Internal damage,need to be sent to factory"
+                         />
+
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Client Remark"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textclientremark"
+                         android:editable="false"
+                         android:text="Quality Service Provided "
+
+                         />
+
+
+
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="10dp"
+                         android:text="Payment Via"
+                         android:textColor="@color/colorPurple"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_marginRight="10dp"
+                         android:id="@+id/textpaymentvia"
+                         android:editable="false"
+                         android:text="Cheque Payment "
+                         />
+
+
+                 </LinearLayout>
+             </android.support.v7.widget.CardView>
+
+
+         </RelativeLayout>
+
+     </ScrollView>
 
 
 
